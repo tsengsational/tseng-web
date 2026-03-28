@@ -1,6 +1,7 @@
 import { createDirectus, rest, readItems } from '@directus/sdk';
 
-const client = createDirectus('http://127.0.0.1:8055').with(rest());
+const DIRECTUS_URL = import.meta.env.VITE_DIRECTUS_URL || 'http://127.0.0.1:8055';
+const client = createDirectus(DIRECTUS_URL).with(rest());
 
 export async function fetchFeaturedProjects() {
   try {
@@ -21,5 +22,6 @@ export async function fetchFeaturedProjects() {
 
 export function getImageUrl(id) {
   if (!id) return '';
-  return `http://127.0.0.1:8055/assets/${id}`;
+  const DIRECTUS_URL = import.meta.env.VITE_DIRECTUS_URL || 'http://127.0.0.1:8055';
+  return `${DIRECTUS_URL}/assets/${id}`;
 }

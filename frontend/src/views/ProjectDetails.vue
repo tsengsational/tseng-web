@@ -97,7 +97,8 @@ const route = useRoute();
 const project = ref(null);
 const loading = ref(true);
 
-const client = createDirectus('http://127.0.0.1:8055').with(rest());
+const DIRECTUS_URL = import.meta.env.VITE_DIRECTUS_URL || 'http://127.0.0.1:8055';
+const client = createDirectus(DIRECTUS_URL).with(rest());
 
 onMounted(async () => {
   try {
