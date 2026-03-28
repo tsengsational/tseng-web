@@ -1,4 +1,4 @@
-const { createDirectus, rest, authentication, createCollection, createField, createItems } = require('@directus/sdk');
+const { createDirectus, rest, authentication, createCollection, createField, createItems, readCollections, readFields, readItems, readPermissions, createPermission } = require('@directus/sdk');
 
 async function setup() {
   const client = createDirectus('http://127.0.0.1:8055').with(rest()).with(authentication());
@@ -18,13 +18,29 @@ async function setup() {
 
   await client.login('admin@example.com', 'admin');
 
+  // Helper to handle "already exists" errors
+  const tryRequest = async (action, description) => {
+    try {
+      await client.request(action);
+      console.log(`${description} successful.`);
+    } catch (error) {
+      const msg = error.errors?.[0]?.message || error.message || '';
+      if (msg.includes('already exists') || msg.includes('unique constraint')) {
+        console.log(`${description} skipped (already exists).`);
+      } else {
+        console.warn(`Warning during ${description.toLowerCase()}:`, msg);
+      }
+    }
+  };
+
   try {
-    console.log('Creating projects collection...');
-    await client.request(createCollection({
+    console.log('Starting setup...');
+    
+    await tryRequest(createCollection({
       collection: 'projects',
       schema: { name: 'projects' },
       meta: { collection: 'projects', icon: 'cases' }
-    }));
+    }), 'Creating projects collection');
     
     const fields = [
       { field: 'title', type: 'string', meta: { interface: 'input' } },
@@ -36,12 +52,10 @@ async function setup() {
     ];
 
     for (const f of fields) {
-      console.log(`Creating field ${f.field}...`);
-      await client.request(createField('projects', f));
+      await tryRequest(createField('projects', f), `Creating field ${f.field}`);
     }
 
-    console.log('Inserting seed data...');
-    await client.request(createItems('projects', [
+    await tryRequest(createItems('projects', [
       {
         title: 'Fear & Wonder',
         description: 'A theatrical play script exploring human emotions.',
@@ -84,27 +98,21 @@ async function setup() {
         is_featured: true,
         link: 'https://example.com/3d-amigurumi'
       }
-    ]));
+    ]), 'Inserting seed data');
     
-    // Allow public read access to projects
-    console.log('Updating public permissions...');
-    await client.request(() => ({
-      path: '/permissions',
-      method: 'POST',
-      body: JSON.stringify({
-        role: null, // Public role
-        collection: 'projects',
-        action: 'read',
-        permissions: {},
-        validation: null,
-        presets: null,
-        fields: ['*']
-      })
-    }));
+    await tryRequest(createPermission({
+      role: null, // Public role
+      collection: 'projects',
+      action: 'read',
+      permissions: {},
+      validation: null,
+      presets: null,
+      fields: ['*']
+    }), 'Updating public permissions');
 
-    console.log('Setup complete!');
+    console.log('Setup finished!');
   } catch (error) {
-    console.error('Error during setup:', error);
+    console.error('Fatal error during setup:', error.message);
   }
 }
 
