@@ -59,27 +59,33 @@
           </div>
         </aside>
 
-        <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-lg border border-white/60 flex flex-col justify-between">
-            <div>
-              <div class="text-[#a20da0] mb-6 text-3xl">✦</div>
-              <h2 class="text-3xl italic font-serif mb-6">The Creative Challenge</h2>
-              <p class="text-slate-500 leading-relaxed">
-                Balancing technical constraints with the 'Editorial' aesthetic requested in the initial brief. This project required a custom-built headless architecture to deliver content with millisecond precision across global regions.
-              </p>
-            </div>
+        <div class="lg:col-span-9 bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-lg border border-white/60">
+          <div v-if="project.content && project.content.blocks && project.content.blocks.length > 0" class="prose max-w-none">
+            <template v-for="(block, index) in project.content.blocks" :key="index">
+              <h1 v-if="block.type === 'header' && block.data.level === 1" v-html="block.data.text" class="text-4xl italic font-serif mb-6 text-[#2d2f31]"></h1>
+              <h2 v-else-if="block.type === 'header' && block.data.level === 2" v-html="block.data.text" class="text-3xl italic font-serif mb-6 text-[#2d2f31]"></h2>
+              <h3 v-else-if="block.type === 'header' && block.data.level === 3" v-html="block.data.text" class="text-2xl font-semibold mb-4 text-[#2d2f31]"></h3>
+              <p v-else-if="block.type === 'paragraph'" v-html="block.data.text" class="text-slate-500 text-lg leading-relaxed mb-6"></p>
+              <ul v-else-if="block.type === 'list' && block.data.style === 'unordered'" class="list-disc list-inside text-slate-500 text-lg leading-relaxed mb-6 space-y-2">
+                <li v-for="(item, i) in block.data.items" :key="i" v-html="item"></li>
+              </ul>
+              <ol v-else-if="block.type === 'list' && block.data.style === 'ordered'" class="list-decimal list-inside text-slate-500 text-lg leading-relaxed mb-6 space-y-2">
+                <li v-for="(item, i) in block.data.items" :key="i" v-html="item"></li>
+              </ol>
+              <div v-else-if="block.type === 'image'" class="my-10 rounded-3xl overflow-hidden shadow-xl bg-slate-100 border border-slate-200">
+                <img :src="getImageUrl(block.data.file?.url)" :alt="block.data.caption" class="w-full h-auto object-cover" />
+                <p v-if="block.data.caption" class="text-sm text-center text-slate-400 mt-4 mb-4 italic px-4">{{ block.data.caption }}</p>
+              </div>
+              <blockquote v-else-if="block.type === 'quote'" class="border-l-[6px] border-[#a20da0] pl-8 py-4 my-10 bg-gradient-to-r from-slate-50 to-transparent italic text-2xl text-slate-700 rounded-r-3xl">
+                <p v-html="block.data.text" class="mb-2 font-serif leading-relaxed"></p>
+                <footer v-if="block.data.caption" class="text-sm text-[#a20da0] font-bold uppercase tracking-widest mt-4">— {{ block.data.caption }}</footer>
+              </blockquote>
+              <div v-else-if="block.type === 'delimiter'" class="my-12 flex justify-center text-[#a20da0] text-3xl opacity-50">✦ ✦ ✦</div>
+            </template>
           </div>
-
-          <div class="md:col-span-2 bg-gradient-to-br from-[#a20da0] to-[#fc6cf2] p-12 rounded-3xl text-white flex flex-col md:flex-row gap-12 items-center">
-            <div class="md:w-1/2">
-              <h2 class="text-4xl italic font-serif mb-6 text-white">Prismatic Logic</h2>
-              <p class="text-white/80 leading-relaxed font-medium">
-                Every interaction in our gallery is governed by a 'chromatic weight' system. As users explore different layers of the project, the primary accents shift in intensity, creating a responsive atmosphere.
-              </p>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-               <div class="h-32 w-32 rounded-full bg-white/20 backdrop-blur-3xl border border-white/30 animate-pulse"></div>
-            </div>
+          <div v-else class="flex flex-col items-center justify-center py-20 opacity-50">
+            <div class="text-[#a20da0] mb-4 text-4xl">✦</div>
+            <p class="text-slate-500 italic text-lg font-serif">Project documentation is currently being archived.</p>
           </div>
         </div>
       </section>

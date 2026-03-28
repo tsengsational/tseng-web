@@ -27,3 +27,6 @@ Thumbs.db
 
 # Screens (Mockups)
 screens/
+
+# Logs
+backend/error.log
