@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+# We define the root as frontend so Railway can build the Vite app directly
+root = "frontend"
+
+[deploy]
+startCommand = "npm run preview"
+healthcheckPath = "/"
+restartPolicy = "on-failure"
+
+[services.web]
+# If you want to deploy the frontend as a specific web service
+envVars = ["VITE_DIRECTUS_URL"]
