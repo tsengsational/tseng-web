@@ -1,7 +1,8 @@
 const { createDirectus, rest, authentication, createCollection, createField, createItems, readCollections, readFields, readItems, readPermissions, createPermission } = require('@directus/sdk');
 
 async function setup() {
-  const client = createDirectus('http://127.0.0.1:8055').with(rest()).with(authentication());
+  const url = process.env.DIRECTUS_URL || 'http://127.0.0.1:8055';
+  const client = createDirectus(url).with(rest()).with(authentication());
   
   // Wait for directus to be ready
   let ready = false;
