@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;700&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-dim": "#f364e9",
+                        "primary-fixed": "#fc6cf2",
+                        "tertiary-fixed-dim": "#ff7a77",
+                        "surface-container-low": "#111416",
+                        "surface-container-highest": "#232629",
+                        "secondary-container": "#00687a",
+                        "on-primary-fixed-variant": "#5c005b",
+                        "tertiary-container": "#ff7572",
+                        "tertiary-fixed": "#ff928d",
+                        "on-error": "#490013",
+                        "primary-fixed-dim": "#ed5ee4",
+                        "error-dim": "#d73357",
+                        "inverse-surface": "#f9f9fc",
+                        "on-tertiary-fixed-variant": "#750d16",
+                        "on-secondary-container": "#ecfaff",
+                        "outline-variant": "#46484a",
+                        "on-secondary-fixed": "#003a45",
+                        "surface": "#0c0e10",
+                        "on-tertiary": "#65000d",
+                        "on-tertiary-fixed": "#3a0004",
+                        "error": "#ff6e84",
+                        "outline": "#747578",
+                        "background": "#0c0e10",
+                        "on-surface": "#eeeef0",
+                        "surface-bright": "#292c2f",
+                        "on-secondary": "#004551",
+                        "on-error-container": "#ffb2b9",
+                        "primary": "#ff7cf4",
+                        "secondary-fixed": "#63e2ff",
+                        "surface-container": "#171a1c",
+                        "secondary-dim": "#00c7e7",
+                        "surface-dim": "#0c0e10",
+                        "primary-container": "#f667ec",
+                        "surface-tint": "#ff7cf4",
+                        "on-secondary-fixed-variant": "#005968",
+                        "on-surface-variant": "#aaabad",
+                        "inverse-primary": "#a715a4",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-container": "#4e0008",
+                        "on-primary-container": "#440043",
+                        "inverse-on-surface": "#535557",
+                        "tertiary-dim": "#fc7370",
+                        "surface-container-high": "#1d2022",
+                        "error-container": "#a70138",
+                        "surface-variant": "#232629",
+                        "on-background": "#eeeef0",
+                        "tertiary": "#ff8d89",
+                        "on-primary": "#580057",
+                        "secondary": "#1ad6f8",
+                        "on-primary-fixed": "#130012",
+                        "secondary-fixed-dim": "#1ad6f8"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(70, 72, 74, 0.15) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .prismatic-scrim {
+            background: radial-gradient(circle at 80% 20%, rgba(26, 214, 248, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(255, 124, 244, 0.08) 0%, transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary/30 selection:text-secondary">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#0c0e10]/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.25)] flex justify-between items-center px-8 py-6 max-w-full">
+<div class="text-2xl font-headline font-bold text-white tracking-tighter">
+            The Digital Polymath
+        </div>
+<div class="hidden md:flex items-center gap-12">
+<a class="text-slate-400 font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Writer</a>
+<a class="text-slate-400 font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Artist</a>
+<a class="text-[#ff7cf4] border-b-2 border-[#ff7cf4] pb-1 font-bold font-label uppercase text-xs tracking-widest" href="#">Coder</a>
+<a class="text-slate-400 font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Studio</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-white hover:text-primary transition-colors">menu</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 min-h-screen relative overflow-hidden">
+<div class="absolute inset-0 grid-pattern pointer-events-none opacity-40"></div>
+<div class="absolute inset-0 prismatic-scrim pointer-events-none"></div>
+<div class="container mx-auto px-8 relative z-10">
+<!-- Header Section -->
+<header class="max-w-4xl mb-24">
+<div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-secondary-container/20 text-secondary-dim font-label text-[10px] uppercase tracking-widest border border-secondary/10">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                    Terminal_Active / root / coder
+                </div>
+<h1 class="text-6xl md:text-8xl font-headline italic tracking-tighter text-white mb-8">
+                    The Coder: <span class="text-secondary">Collection</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-body leading-relaxed max-w-2xl">
+                    A repository of algorithmic explorations, where logic meets aesthetics. These projects bridge the gap between raw execution and visual poetry.
+                </p>
+</header>
+<!-- Projects Grid (Asymmetric Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-32">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-high transition-all duration-500 hover:bg-surface-container-highest">
+<div class="aspect-[16/9] overflow-hidden">
+<img alt="Abstract code art" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="Intricate digital mesh of cyan and magenta lines flowing on a dark background, representing complex data structures and algorithmic art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX9pMaa2G_LJZTOPWf4SG1iBPcL5befpoSyamu4oXsRBIdxqSZpw8kczlTSv3U4YeB7BSzCq9s4OyBqKNfPL-xoG-BzhLG09alSTbJV1dI3v9rhCISb7I9bUfb1ZUVviW71elhs_kU-eUXUIl3MaUvN_gq34io5AuqEi_W9l9JvQUHrfURN68m79_00MWq8oXZgSBVdy4WPbrMr9xo8eAzbQfKJ-hUAzGGjqeLnHatEgq5mroiz8O1MLi5uKagl1VOv6AXG_lN2-k"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-3xl font-headline text-white mb-2">Neural Landscapes v2.0</h3>
+<p class="text-on-surface-variant font-body mb-6">Generative terrain mapping using noise functions and custom shaders.</p>
+</div>
+<span class="font-label text-secondary text-xs bg-secondary/10 px-3 py-1 rounded">GLSL / WEBGL</span>
+</div>
+<button class="bg-secondary-container/40 hover:bg-secondary-container transition-colors px-6 py-2 rounded-md font-label text-xs uppercase tracking-widest text-on-secondary-container flex items-center gap-2">
+                            View Source <span class="material-symbols-outlined text-sm">terminal</span>
+</button>
+</div>
+</div>
+<!-- Vertical Card -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-high transition-all duration-500 hover:bg-surface-container-highest flex flex-col">
+<div class="flex-grow aspect-[3/4] overflow-hidden">
+<img alt="Cyber security concept" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110" data-alt="Technical schematic of a circuit board with neon green and cyan glowing traces on a black surface, high tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxu_3cdrsslcHqfTMXoz0O_-mMeGyaKek19rzIfeBDsKyfsf1FDs1ykHk25dwqVb0JRvOxfA_qAq2Z2A-FNtZ9h19ZaQql05x6BdnBMKif17oJDdYWNwK5SkwdPsLHmc4bFGdN94lDMRi_Ds4CfDhLFyV_-kF3WHxdApwJUiEOT5wyr1jTKvMOWSXiEHn7NlTE_LgGJhwo1EwSxWrsvevNyII8Lhtj68wR2b7TUawPZSpXmag0WOQNy4n29YIr86ER8K8cIJkNOI"/>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-headline text-white mb-2">Encrypta</h3>
+<p class="text-on-surface-variant font-body mb-4 text-sm">Visualizing cryptographic handshakes in real-time environments.</p>
+<div class="flex gap-2">
+<span class="font-label text-[10px] text-slate-500 uppercase tracking-tighter">Python</span>
+<span class="font-label text-[10px] text-slate-500 uppercase tracking-tighter">Rust</span>
+</div>
+</div>
+</div>
+<!-- Small Grid Items -->
+<div class="md:col-span-4 group rounded-xl bg-surface-container-high p-8 transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center mb-6 text-secondary">
+<span class="material-symbols-outlined">data_object</span>
+</div>
+<h3 class="text-xl font-headline text-white mb-3">Syntax Prism</h3>
+<p class="text-on-surface-variant text-sm font-body mb-6">A custom VS Code theme optimizing for long-form creative coding sessions.</p>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:underline inline-flex items-center gap-2" href="#">
+                        Install Extension <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+<div class="md:col-span-4 group rounded-xl bg-surface-container-high p-8 transition-all duration-300 hover:-translate-y-1 border-b-2 border-transparent hover:border-primary/40">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined">api</span>
+</div>
+<h3 class="text-xl font-headline text-white mb-3">Art-As-API</h3>
+<p class="text-on-surface-variant text-sm font-body mb-6">RESTful endpoints that serve programmatically generated SVG patterns.</p>
+<a class="text-primary font-label text-[10px] uppercase tracking-widest hover:underline inline-flex items-center gap-2" href="#">
+                        Read Docs <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+<div class="md:col-span-4 group rounded-xl bg-surface-container-high p-8 transition-all duration-300 hover:-translate-y-1">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center mb-6 text-secondary-dim">
+<span class="material-symbols-outlined">flowsheet</span>
+</div>
+<h3 class="text-xl font-headline text-white mb-3">Logic Weaver</h3>
+<p class="text-on-surface-variant text-sm font-body mb-6">Experimental visual programming interface for narrative designers.</p>
+<a class="text-secondary-dim font-label text-[10px] uppercase tracking-widest hover:underline inline-flex items-center gap-2" href="#">
+                        Try Demo <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+<!-- Large Horizontal Info Section (No borders, just tonal shift) -->
+<div class="md:col-span-12 bg-surface-container-low rounded-2xl p-12 mt-8 relative overflow-hidden">
+<div class="absolute right-0 top-0 p-8 text-surface-container-highest font-label text-[140px] leading-none select-none pointer-events-none italic opacity-50">
+                        0x1
+                    </div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="text-4xl font-headline italic text-white mb-6">The Methodology</h2>
+<p class="text-on-surface-variant font-body text-lg leading-relaxed mb-8">
+                            Code is not just a tool; it's a medium. I approach software development with the same rigor as a typesetter and the same spontaneity as an abstract painter. Every function is a brushstroke.
+                        </p>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<p class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] mb-2">Primary Stack</p>
+<p class="text-white font-body">TypeScript, Rust, Three.js, Python</p>
+</div>
+<div>
+<p class="font-label text-[10px] text-primary uppercase tracking-[0.2em] mb-2">Focus Areas</p>
+<p class="text-white font-body">Creative Coding, Tooling, Generative Systems</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0c0e10] w-full py-12 px-8 border-t border-[#46484a]/15 flex flex-col md:flex-row justify-between items-center gap-8 w-full">
+<div class="text-lg font-black text-white font-label tracking-tighter">
+            THE DIGITAL POLYMATH
+        </div>
+<div class="flex gap-8">
+<a class="text-slate-500 font-label text-[10px] uppercase tracking-[0.2em] hover:text-[#1ad6f8] transition-colors duration-300" href="#">Archives</a>
+<a class="text-slate-500 font-label text-[10px] uppercase tracking-[0.2em] hover:text-[#1ad6f8] transition-colors duration-300" href="#">Process</a>
+<a class="text-slate-500 font-label text-[10px] uppercase tracking-[0.2em] hover:text-[#1ad6f8] transition-colors duration-300" href="#">Contact</a>
+<a class="text-slate-500 font-label text-[10px] uppercase tracking-[0.2em] hover:text-[#1ad6f8] transition-colors duration-300" href="#">Privacy</a>
+</div>
+<div class="text-slate-500 font-label text-[10px] uppercase tracking-[0.2em]">
+            © 2024 The Digital Polymath. Built with code, art, and prose.
+        </div>
+</footer>
+</body></html>

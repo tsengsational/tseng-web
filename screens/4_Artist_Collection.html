@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&amp;family=Newsreader:ital,opsz,wght@1,6..72,200..800&amp;family=Space+Grotesk:wght@300;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-dim": "#f364e9",
+                        "primary-fixed": "#fc6cf2",
+                        "tertiary-fixed-dim": "#ff7a77",
+                        "surface-container-low": "#111416",
+                        "surface-container-highest": "#232629",
+                        "secondary-container": "#00687a",
+                        "on-primary-fixed-variant": "#5c005b",
+                        "tertiary-container": "#ff7572",
+                        "tertiary-fixed": "#ff928d",
+                        "on-error": "#490013",
+                        "primary-fixed-dim": "#ed5ee4",
+                        "error-dim": "#d73357",
+                        "inverse-surface": "#f9f9fc",
+                        "on-tertiary-fixed-variant": "#750d16",
+                        "on-secondary-container": "#ecfaff",
+                        "outline-variant": "#46484a",
+                        "on-secondary-fixed": "#003a45",
+                        "surface": "#0c0e10",
+                        "on-tertiary": "#65000d",
+                        "on-tertiary-fixed": "#3a0004",
+                        "error": "#ff6e84",
+                        "outline": "#747578",
+                        "background": "#0c0e10",
+                        "on-surface": "#eeeef0",
+                        "surface-bright": "#292c2f",
+                        "on-secondary": "#004551",
+                        "on-error-container": "#ffb2b9",
+                        "primary": "#ff7cf4",
+                        "secondary-fixed": "#63e2ff",
+                        "surface-container": "#171a1c",
+                        "secondary-dim": "#00c7e7",
+                        "surface-dim": "#0c0e10",
+                        "primary-container": "#f667ec",
+                        "surface-tint": "#ff7cf4",
+                        "on-secondary-fixed-variant": "#005968",
+                        "on-surface-variant": "#aaabad",
+                        "inverse-primary": "#a715a4",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-container": "#4e0008",
+                        "on-primary-container": "#440043",
+                        "inverse-on-surface": "#535557",
+                        "tertiary-dim": "#fc7370",
+                        "surface-container-high": "#1d2022",
+                        "error-container": "#a70138",
+                        "surface-variant": "#232629",
+                        "on-background": "#eeeef0",
+                        "tertiary": "#ff8d89",
+                        "on-primary": "#580057",
+                        "secondary": "#1ad6f8",
+                        "on-primary-fixed": "#130012",
+                        "secondary-fixed-dim": "#1ad6f8"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(35, 38, 41, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .prismatic-glow {
+            box-shadow: 0 0 30px rgba(243, 100, 233, 0.1);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0c0e10]/60 backdrop-blur-xl flex justify-between items-center px-8 py-6 max-w-full shadow-[0_20px_40px_rgba(0,0,0,0.25)]">
+<div class="text-2xl font-headline font-bold text-white tracking-tighter">
+            The Digital Polymath
+        </div>
+<div class="hidden md:flex items-center gap-12">
+<a class="text-slate-400 font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Writer</a>
+<a class="text-[#ff7cf4] border-b-2 border-[#ff7cf4] pb-1 font-bold font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Artist</a>
+<a class="text-slate-400 font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Coder</a>
+<a class="text-slate-400 font-label uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Studio</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#ff7cf4] p-2 hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 md:px-16 lg:px-24">
+<!-- Prismatic Scrim Decorative Elements -->
+<div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-tertiary opacity-5 blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary opacity-5 blur-[100px] pointer-events-none"></div>
+<!-- Header Section -->
+<header class="max-w-4xl mb-24 relative z-10">
+<div class="flex items-center gap-4 mb-6">
+<span class="h-[1px] w-12 bg-primary"></span>
+<span class="font-label text-xs uppercase tracking-[0.3em] text-primary">Portfolio Collection</span>
+</div>
+<h1 class="font-headline italic text-6xl md:text-8xl tracking-tighter text-white mb-8">
+                The Artist: <span class="text-primary-dim">Collection</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant leading-relaxed max-w-2xl">
+                A tactile exploration of form, pigment, and thread. This gallery represents the intersection of classical technique and digital refraction—where every stitch and brushstroke carries the weight of a narrative.
+            </p>
+</header>
+<!-- Bento Grid / Modern Gallery -->
+<div class="asymmetric-grid">
+<!-- Large Feature Card: Fiber Arts -->
+<div class="col-span-12 md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low transition-all duration-500 hover:translate-y-[-4px]">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of intricate hand-woven textile with vibrant pink and deep purple threads, macro detail showing fiber texture and craftsmanship" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChwe5Ul7NYMTiA1GA1TDiytV5lumEYqNNSz3q2sQ1gO7XuN3ro2cbOm9HkPS4FY-JnTgK6YsVcyK3BRS6XUZhtjzGsR_al-Aoxpf9bQcyG92wry8ErMCLqg2Pn4IACm8cliiIaFZGPLHHpm7aTXdYTZHBeUxigUMhiwLZJ-J4LG-n6T3H8m4glOzmLJcxD-qeHzhjQT2OJKTUFFEWKAWqoDD6LfF774QtQ4DBvTme-s_WfKZ4LDT-_jts46k-awBxw2eQoXjKeloQ"/>
+</div>
+<div class="p-8 absolute bottom-0 left-0 w-full glass-card border-t border-outline-variant/15">
+<div class="flex justify-between items-end">
+<div>
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary mb-2 block">Fiber Arts</span>
+<h3 class="font-headline text-3xl text-white italic">Chromatic Tension No. 4</h3>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-md font-label text-xs uppercase tracking-wider hover:opacity-90 transition-opacity">
+                            View Study
+                        </button>
+</div>
+</div>
+</div>
+<!-- Small Card: Painting -->
+<div class="col-span-12 md:col-span-4 group bg-surface-container-high rounded-xl p-6 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="aspect-square rounded-lg overflow-hidden mb-6 bg-surface-container-lowest">
+<img alt="" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="Oil painting palette with thick impasto textures of coral, salmon, and hot pink paint, dramatic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0_yrPoIHvUNyHjnheH41y5YVTCKvmqnQFRf0mGRMu4REEc8fpO_6HSAk40Sl2wS_m1KLGTFJV4_dpz18Zs4hMURvusSUfTJArZb7efGuExWvruA7kJyV20QE30KZajOUIH6xj-FONbjVGr93X4k3tTlTFdD3AiHS_Nm_tJi1Bv6kYx16ptjO2TfDDd9CiJalw8F-mlsLzGzVKhqEnP3z9Ivf2iw6iFvrE9eeUsi66F3cvjX5UIjamI8z6YU1iO67__X9_vBVNY68"/>
+</div>
+<span class="font-label text-[10px] uppercase tracking-widest text-tertiary mb-2 block">Painting</span>
+<h3 class="font-body font-bold text-xl text-white mb-4">Midnight Bloom Study</h3>
+<p class="text-sm text-on-surface-variant font-light leading-relaxed">
+                    An exploration of rapid oil applications on charcoal paper, focusing on the ephemeral nature of night flora.
+                </p>
+</div>
+<!-- Medium Card: Illustration -->
+<div class="col-span-12 md:col-span-5 group relative rounded-xl overflow-hidden bg-surface-container-low transition-all duration-500">
+<div class="aspect-[4/5] w-full overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Minimalist digital illustration of flowing organic shapes in shades of turquoise and coral pink on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXAVmLf1QxC3d83i8Bf3KdJDGcuKS244GvIUIsRGX3DPWoKwUzdVnsR6Vlvw2c8bUmK8U5P9777twCuW2YWGxFxKTnTZpsIVodnZgTPzfZKtAjcSV2_SPQFlo9rWEOxUnM-4-dAU03-_M90AgCLF9Qx1dYJXH4UXmXEfrWSUKRAKtJpapYyOhJDkhYnDrJ7whWX3ziHEgf4wVh_4Gd7Y2Jjl3yUj9z4HABd3sinI7f_InZyoJ3f3wmFqj3oRSDCVrQwD1EN7klrIg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-80"></div>
+<div class="absolute bottom-0 p-8">
+<span class="inline-block bg-secondary-container text-on-secondary-container rounded-full px-3 py-1 text-[10px] font-label uppercase tracking-widest mb-4">Illustration</span>
+<h3 class="font-headline text-3xl text-white italic mb-2">The Polymath's Maze</h3>
+<p class="text-sm text-slate-400 font-label">Digital Vector | 2024</p>
+</div>
+</div>
+<!-- Tall Card: Process -->
+<div class="col-span-12 md:col-span-7 flex flex-col justify-center p-12 bg-surface-container-low rounded-xl border-l-4 border-primary/20 relative">
+<div class="absolute top-8 right-8 text-primary/10">
+<span class="material-symbols-outlined text-9xl" style="font-variation-settings: 'wght' 100;">palette</span>
+</div>
+<h4 class="font-label text-xs uppercase tracking-[0.4em] text-primary mb-8">The Studio Philosophy</h4>
+<blockquote class="font-headline text-4xl md:text-5xl text-white italic leading-tight mb-8">
+                    "Art is the code of the soul; it requires both the logic of the grid and the chaos of the hand."
+                </blockquote>
+<div class="flex items-center gap-6">
+<div class="h-12 w-12 rounded-full border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="brush">brush</span>
+</div>
+<div>
+<p class="text-white font-bold">In-Progress Studies</p>
+<p class="text-sm text-on-surface-variant font-label">14 Active Canvases</p>
+</div>
+</div>
+</div>
+<!-- Final Grid Item: Painting Series -->
+<div class="col-span-12 md:col-span-12 group bg-surface-container-high rounded-xl overflow-hidden transition-all duration-500">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 aspect-square md:aspect-auto">
+<img alt="" class="w-full h-full object-cover" data-alt="Abstract floral oil painting with expressive brushstrokes of magenta, ochre, and deep teal, rich texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpot6jlFUC5SpKbLc73WcpW7iqMzwVIADtHad7S-R-R3-PxsRedIPdZm-jPsuVgTKrmXMXehxE7mT705lYcv28OPKtWabdRnagMjqTUWi4OW5MBdkKSrnbagMWseeSWWQ6HCeOxmAXABfzzh6XmApD6mI7Vqe3GFRi9GvY4avf7sWHYEJJRd9B2u2rPz_ht6Elt6sSYT75bFcjLE-zbDtLLmv-lZpccqWfrbL5ImktErfNj4PMCa81dyYVAwtsIXEVzfRWdVgyvCM"/>
+</div>
+<div class="md:w-1/2 p-12 flex flex-col justify-center">
+<div class="flex gap-2 mb-6">
+<span class="h-1 w-8 bg-tertiary"></span>
+<span class="h-1 w-4 bg-primary"></span>
+</div>
+<h3 class="font-headline text-5xl text-white italic mb-6">Prismatic Flora</h3>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed mb-10">
+                            A limited series of 12 original paintings exploring the diffraction of light through organic botanical structures. Each piece is layered with translucent glazes to achieve a glass-like depth.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-[10px] font-label uppercase tracking-widest">Oil on Canvas</span>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-[10px] font-label uppercase tracking-widest">Mixed Media</span>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-[10px] font-label uppercase tracking-widest">2024</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<section class="mt-32 p-16 rounded-2xl bg-gradient-to-r from-surface-container-low to-surface-container-high border border-outline-variant/10 text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+<h2 class="font-headline text-4xl text-white italic mb-6">Commission a Piece</h2>
+<p class="font-body text-on-surface-variant max-w-xl mx-auto mb-10">
+                Seeking a custom textile or a bespoke painting for your space? Let's bridge the digital and tactile worlds together.
+            </p>
+<button class="bg-white text-surface px-10 py-4 rounded-md font-label font-bold uppercase text-sm tracking-widest hover:bg-primary hover:text-white transition-all duration-300">
+                Contact Studio
+            </button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 border-t border-[#46484a]/15 bg-[#0c0e10]">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto">
+<div class="text-lg font-black text-white">THE DIGITAL POLYMATH</div>
+<div class="flex gap-12 font-label text-[10px] uppercase tracking-[0.2em]">
+<a class="text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Archives</a>
+<a class="text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Process</a>
+<a class="text-[#ff7cf4] transition-colors duration-300" href="#">Contact</a>
+<a class="text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Privacy</a>
+</div>
+<div class="text-slate-500 font-label text-[10px] uppercase tracking-[0.2em] text-center md:text-right">
+                © 2024 THE DIGITAL POLYMATH. BUILT WITH CODE, ART, AND PROSE.
+            </div>
+</div>
+</footer>
+</body></html>

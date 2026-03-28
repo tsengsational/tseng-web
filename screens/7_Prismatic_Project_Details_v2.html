@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ephemeral Architectures - Jason Tseng</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;600;800&amp;family=Space_Grotesk:wght@300;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#ff7572",
+              "on-primary-container": "#440043",
+              "on-background": "#eeeef0",
+              "inverse-surface": "#f9f9fc",
+              "secondary-dim": "#00c7e7",
+              "on-secondary-fixed": "#003a45",
+              "surface": "#0c0e10",
+              "on-primary": "#580057",
+              "surface-bright": "#292c2f",
+              "on-tertiary-fixed": "#3a0004",
+              "on-surface-variant": "#aaabad",
+              "secondary-fixed": "#63e2ff",
+              "surface-container": "#171a1c",
+              "surface-container-highest": "#232629",
+              "on-error-container": "#ffb2b9",
+              "outline": "#747578",
+              "outline-variant": "#46484a",
+              "on-error": "#490013",
+              "error": "#ff6e84",
+              "on-tertiary-fixed-variant": "#750d16",
+              "error-dim": "#d73357",
+              "surface-container-lowest": "#000000",
+              "tertiary-dim": "#fc7370",
+              "on-tertiary": "#65000d",
+              "primary-fixed": "#fc6cf2",
+              "on-secondary-container": "#ecfaff",
+              "primary": "#ff7cf4",
+              "tertiary": "#ff8d89",
+              "primary-container": "#f667ec",
+              "on-secondary": "#004551",
+              "secondary": "#1ad6f8",
+              "on-tertiary-container": "#4e0008",
+              "primary-fixed-dim": "#ed5ee4",
+              "surface-tint": "#ff7cf4",
+              "tertiary-fixed": "#ff928d",
+              "surface-container-low": "#111416",
+              "on-surface": "#eeeef0",
+              "inverse-on-surface": "#535557",
+              "background": "#0c0e10",
+              "surface-variant": "#232629",
+              "surface-container-high": "#1d2022",
+              "secondary-fixed-dim": "#1ad6f8",
+              "tertiary-fixed-dim": "#ff7a77",
+              "on-primary-fixed-variant": "#5c005b",
+              "on-secondary-fixed-variant": "#005968",
+              "primary-dim": "#f364e9",
+              "on-primary-fixed": "#130012",
+              "error-container": "#a70138",
+              "inverse-primary": "#a715a4",
+              "surface-dim": "#0c0e10",
+              "secondary-container": "#00687a"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .prismatic-gradient {
+            background: linear-gradient(135deg, #ff7cf4 0%, #f667ec 100%);
+        }
+        .glass-panel {
+            background: rgba(35, 38, 41, 0.6);
+            backdrop-filter: blur(40px);
+        }
+        .scrim-glow {
+            background: radial-gradient(circle at center, rgba(255, 141, 137, 0.1) 0%, rgba(26, 214, 248, 0.1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.25)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<span class="font-['Newsreader'] text-2xl font-bold tracking-tighter text-zinc-100">Jason Tseng</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300" href="#">Writer</a>
+<a class="text-pink-400 border-b-2 border-pink-500 pb-1 font-bold font-['Newsreader'] italic tracking-tight text-lg" href="#">Artist</a>
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300" href="#">Coder</a>
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300" href="#">About</a>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="relative min-h-screen pt-20">
+<!-- Prismatic Scrim Decorative Element -->
+<div class="absolute top-40 -left-20 w-96 h-96 scrim-glow rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="absolute bottom-40 -right-20 w-96 h-96 scrim-glow rounded-full blur-3xl -z-10 pointer-events-none opacity-50"></div>
+<!-- Hero Section -->
+<header class="px-6 md:px-12 pt-12 pb-20">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="font-label text-primary tracking-widest uppercase text-xs mb-4 block">Selected Project</span>
+<h1 class="font-headline text-6xl md:text-8xl italic tracking-tighter text-on-surface leading-[0.9] mb-8">
+                            Ephemeral Architectures
+                        </h1>
+</div>
+<div class="lg:col-span-4 pb-2">
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                            An exploration of generative structures that exist only in the moment of their observation, blending SVG math with poetic entropy.
+                        </p>
+</div>
+</div>
+<!-- Immersive Hero Image -->
+<div class="mt-16 relative aspect-[16/7] w-full overflow-hidden rounded-xl group">
+<img class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" data-alt="Abstract geometric landscape with translucent crystalline structures reflecting vibrant pink and turquoise light in a dark void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdgiOwbwDQ5gGwbVsILOY1g7CqjpohEKcwpOiHH7KRb1OqtBPH1tfErTPxlYyDdo9Eoc9nw3rRFvSJGX-H1QZ6VssdZhTms9glo32k7Dj1bTxnmNXg_u3Viv3F7fl0W_3BdFzJUEaRSZrA9JlRNmwmm7EtujHZTjCMN-I06UHqBXyaWjXWRtf_6LJelhr6wFl5oThdjkDAwnp8CiPr-DM-xim-19OyFCrzajBmJlkuigden1TbIRfZX9JXk-lVNbbAp7XTnlqXXg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60"></div>
+</div>
+</div>
+</header>
+<!-- Project Meta & Content -->
+<section class="px-6 md:px-12 py-20 bg-surface-container-low">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Sidebar Info -->
+<aside class="lg:col-span-3 space-y-12 order-2 lg:order-1">
+<div>
+<h3 class="font-label text-secondary uppercase tracking-widest text-xs mb-4">Role</h3>
+<p class="font-body text-on-surface">Creative Technologist<br/>Visual Designer</p>
+</div>
+<div>
+<h3 class="font-label text-secondary uppercase tracking-widest text-xs mb-4">Tools</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-label font-bold uppercase tracking-tighter">React</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-label font-bold uppercase tracking-tighter">Three.js</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-label font-bold uppercase tracking-tighter">GLSL</span>
+</div>
+</div>
+<div>
+<h3 class="font-label text-secondary uppercase tracking-widest text-xs mb-4">Timeline</h3>
+<p class="font-body text-on-surface">4 Months (Winter 2023)</p>
+</div>
+<div class="pt-8 border-t border-outline-variant/15">
+<a class="group flex items-center gap-3 font-label text-primary text-sm tracking-wide" href="#">
+                            VIEW LIVE PROJECT
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="lg:col-span-9 order-1 lg:order-2 space-y-24">
+<!-- The Challenge -->
+<article class="space-y-8">
+<h2 class="font-headline text-4xl italic text-on-surface">The Challenge</h2>
+<div class="max-w-2xl text-on-surface-variant font-body text-lg leading-relaxed space-y-6">
+<p>
+                                How do we capture the feeling of a dream that dissolves the moment you wake up? This project was born from a desire to create digital artifacts that are mathematically perfect yet visually unstable.
+                            </p>
+<p>
+                                Traditional 3D rendering focuses on permanence. I wanted to build a system where the "geometry" is merely a suggestion—a probability field shaped by the viewer's interaction.
+                            </p>
+</div>
+</article>
+<!-- Process Fragments (Asymmetric Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:col-span-2 rounded-xl overflow-hidden bg-surface-container-high aspect-[21/9]">
+<img class="w-full h-full object-cover opacity-80" data-alt="Macro view of a digital wireframe mesh dissolving into particles with soft neon pink highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9sqxEryrkFPqmtcsvMnVwjA6-pjw5NlKTFtRpninUWtmaX2YIw6iOU1RksBRqnfMcP953c08iDgitT1cN8Cq8Ob5qI4XP9NlWzQFCL6kwjorURvDXQue2VwMCNSfY44OmQ_0zXxDJuK_JKgCM0WGIDJK0oUCRCX7dWdKsGauNkUvE2ikKm7fiW9j97NXWA1lILOmWwbZue26Acnxmd20DehBLu0baKhaRpjvinarMuEQRwHfyPJdu2QLXZ2dAW5aeuUSgw3uZhHQ"/>
+</div>
+<div class="rounded-xl overflow-hidden bg-surface-container-high aspect-square">
+<img class="w-full h-full object-cover" data-alt="Conceptual sketch on dark paper showing architectural planes floating in a void with vibrant ink accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBydZtnliTgaMJXQrhdjnRk9a5Be3s9lutepdPgKB4QFF68glHdwuZHBCyFAjrFmiM0va1VJ8Rj7SL43_PH1WoUWChDd597W_CJtwKFOIeKwjwQgTkEMxwYw9ublisCZfT86OGKkzQEeHouMTp11auyBkVJLZgxR0aVtTsXLUm_o-Vm26W0BOVGGN7MVrwMjrAgA68dbtdZf1mlSQyUVsKdC0I2vQv_RT4coSTaNKFRSqZvSN3xShwl-KwpjqR5YVNyS4KdWp9-OY"/>
+</div>
+<div class="rounded-xl p-8 glass-panel flex flex-col justify-center">
+<h4 class="font-label text-tertiary-dim text-xs uppercase tracking-widest mb-4">Process Fragment #04</h4>
+<p class="font-headline text-2xl italic text-zinc-100">
+                                "The code doesn't define the shape; it defines the rules for the shape to break itself."
+                            </p>
+</div>
+</div>
+<!-- Technological Bridge (Code Snippet) -->
+<article class="space-y-8">
+<h2 class="font-headline text-4xl italic text-on-surface">Technological Bridge</h2>
+<p class="max-w-2xl text-on-surface-variant font-body text-lg leading-relaxed">
+                            To achieve the prismatic refraction effect, I developed a custom shader that simulates light dispersion through non-Euclidean surfaces.
+                        </p>
+<div class="bg-surface-container-lowest p-8 rounded-xl font-label text-sm text-secondary border-l-4 border-primary">
+<pre class="overflow-x-auto"><code>// Dispersion Fragment Shader Fragment
+void main() {
+  vec2 uv = vUv;
+  float dispersion = 0.015;
+  vec4 r = texture2D(tDiffuse, uv + vec2(dispersion, 0.0));
+  vec4 g = texture2D(tDiffuse, uv);
+  vec4 b = texture2D(tDiffuse, uv - vec2(dispersion, 0.0));
+  
+  gl_FragColor = vec4(r.r, g.g, b.b, 1.0);
+}</code></pre>
+</div>
+</article>
+<!-- Artistic Pull Quote -->
+<div class="relative py-20 px-12 text-center">
+<span class="absolute top-0 left-1/2 -translate-x-1/2 font-headline text-9xl text-primary-dim opacity-10 select-none">“</span>
+<blockquote class="font-headline text-3xl md:text-5xl italic leading-tight text-on-surface relative z-10">
+                            Digital architecture is often too solid. I wanted to build something that felt like it was <span class="text-primary underline decoration-tertiary/30 decoration-4 underline-offset-8">breathing</span> in the browser.
+                        </blockquote>
+<cite class="mt-8 block font-label text-zinc-500 uppercase tracking-widest text-xs">— Designer's Journal, Dec 2023</cite>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Navigation -->
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-32 border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-12">
+<a class="group text-left" href="#">
+<span class="font-label text-zinc-500 text-xs uppercase tracking-widest mb-2 block">Previous Work</span>
+<span class="font-headline text-3xl italic text-on-surface group-hover:text-primary transition-colors">Neural Tapestries</span>
+</a>
+<div class="h-12 w-px bg-outline-variant/30 hidden md:block"></div>
+<a class="group text-right" href="#">
+<span class="font-label text-zinc-500 text-xs uppercase tracking-widest mb-2 block">Next Insight</span>
+<span class="font-headline text-3xl italic text-on-surface group-hover:text-secondary transition-colors">The Syntax of Light</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-zinc-950 border-t border-zinc-800/20">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto">
+<span class="font-['Newsreader'] text-xl font-semibold text-zinc-200">Jason Tseng</span>
+<p class="font-['Space_Grotesk'] text-sm tracking-wide text-zinc-500 my-6 md:my-0">
+                © 2024 Jason Tseng. Built with code and ink.
+            </p>
+<div class="flex gap-8">
+<a class="text-zinc-500 hover:text-cyan-400 transition-all duration-300 font-['Space_Grotesk'] text-sm uppercase tracking-widest" href="#">Twitter</a>
+<a class="text-zinc-500 hover:text-cyan-400 transition-all duration-300 font-['Space_Grotesk'] text-sm uppercase tracking-widest" href="#">GitHub</a>
+<a class="text-zinc-500 hover:text-cyan-400 transition-all duration-300 font-['Space_Grotesk'] text-sm uppercase tracking-widest" href="#">Instagram</a>
+</div>
+</div>
+</footer>
+</body></html>

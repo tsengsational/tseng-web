@@ -1,0 +1,37 @@
+version: "3"
+services:
+  database:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: directus
+      POSTGRES_PASSWORD: directus_password
+      POSTGRES_DB: directus
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  directus:
+    image: directus/directus:11.2.2
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+    depends_on:
+      - database
+    environment:
+      KEY: "b4c2b90f-96a8-4228-b809-f673f8487bba"
+      SECRET: "f7d750c1-35b8-4fb6-afcf-b9560f4da068"
+      DB_CLIENT: "pg"
+      DB_HOST: "database"
+      DB_PORT: "5432"
+      DB_DATABASE: "directus"
+      DB_USER: "directus"
+      DB_PASSWORD: "directus_password"
+      ADMIN_EMAIL: "admin@example.com"
+      ADMIN_PASSWORD: "admin"
+      # Disable CORS issues during local dev
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:5173"
+volumes:
+  db-data:

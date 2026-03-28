@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#ff7572",
+              "on-primary-container": "#440043",
+              "on-background": "#eeeef0",
+              "inverse-surface": "#f9f9fc",
+              "secondary-dim": "#00c7e7",
+              "on-secondary-fixed": "#003a45",
+              "surface": "#0c0e10",
+              "on-primary": "#580057",
+              "surface-bright": "#292c2f",
+              "on-tertiary-fixed": "#3a0004",
+              "on-surface-variant": "#aaabad",
+              "secondary-fixed": "#63e2ff",
+              "surface-container": "#171a1c",
+              "surface-container-highest": "#232629",
+              "on-error-container": "#ffb2b9",
+              "outline": "#747578",
+              "outline-variant": "#46484a",
+              "on-error": "#490013",
+              "error": "#ff6e84",
+              "on-tertiary-fixed-variant": "#750d16",
+              "error-dim": "#d73357",
+              "surface-container-lowest": "#000000",
+              "tertiary-dim": "#fc7370",
+              "on-tertiary": "#65000d",
+              "primary-fixed": "#fc6cf2",
+              "on-secondary-container": "#ecfaff",
+              "primary": "#ff7cf4",
+              "tertiary": "#ff8d89",
+              "primary-container": "#f667ec",
+              "on-secondary": "#004551",
+              "secondary": "#1ad6f8",
+              "on-tertiary-container": "#4e0008",
+              "primary-fixed-dim": "#ed5ee4",
+              "surface-tint": "#ff7cf4",
+              "tertiary-fixed": "#ff928d",
+              "surface-container-low": "#111416",
+              "on-surface": "#eeeef0",
+              "inverse-on-surface": "#535557",
+              "background": "#0c0e10",
+              "surface-variant": "#232629",
+              "surface-container-high": "#1d2022",
+              "secondary-fixed-dim": "#1ad6f8",
+              "tertiary-fixed-dim": "#ff7a77",
+              "on-primary-fixed-variant": "#5c005b",
+              "on-secondary-fixed-variant": "#005968",
+              "primary-dim": "#f364e9",
+              "on-primary-fixed": "#130012",
+              "error-container": "#a70138",
+              "inverse-primary": "#a715a4",
+              "surface-dim": "#0c0e10",
+              "secondary-container": "#00687a"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .prismatic-glow {
+            background: linear-gradient(135deg, #ff7cf4 0%, #f667ec 100%);
+        }
+        .glass-panel {
+            background: rgba(35, 38, 41, 0.6);
+            backdrop-filter: blur(40px);
+        }
+        .scrim-bg {
+            background: radial-gradient(circle at 80% 20%, rgba(255, 141, 137, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(26, 214, 248, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-dim selection:text-on-primary min-h-screen scrim-bg">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.25)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<a class="font-['Newsreader'] text-2xl font-bold tracking-tighter text-zinc-100" href="#">Jason Tseng</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#writer">Writer</a>
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#artist">Artist</a>
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#coder">Coder</a>
+<a class="text-zinc-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs hover:text-pink-300 transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#about">About</a>
+</div>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-24 space-y-32">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 py-16 flex flex-col md:flex-row items-center gap-16">
+<div class="relative group">
+<div class="absolute -inset-4 prismatic-glow opacity-20 blur-2xl group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative w-64 h-80 overflow-hidden rounded-xl border border-outline-variant/20 shadow-2xl">
+<img alt="Jason Tseng Headshot" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" data-alt="Professional portrait of a creative man with soft artistic lighting, warm skin tones, and a dark textured background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa9VK5-Jh-4kie5filVp757Bc4quC80kH5uJqg5w9vFmrb_0OJ4DDeqF2rj5iBw3B_xh_zKWPrn4JF6kFlF_PXm505JQkiClqBUi2wBXUq1QfdCiTpEoTzP0nK9NDd_fjcSONfKAAemQ8ZJuOMin4GkKND3bnM9B7LYtRW-TIi7oa3YXw1kZTRV-v5IJPMsSx6CPwQn_KH0r8cPKsslUJxZDnL5ecTSf3UbgICOylWM2eZswLh5-KxFoQc8a5iWu3xKBj76olTtG4"/>
+</div>
+</div>
+<div class="flex-1 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-sm" data-weight="fill" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-secondary-container">Creative Lab Open</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl italic leading-tight tracking-tighter">
+                    Welcome to the <span class="text-primary-dim">Creative Lab</span> of Jason Tseng.
+                </h1>
+<p class="font-body text-on-surface-variant text-lg max-w-2xl">
+                    A multi-disciplinary space where ink meets code, and sculpture meets software. Exploring the intersections of narrative, aesthetics, and logic.
+                </p>
+<div class="flex gap-4 pt-4">
+<button class="prismatic-glow text-on-primary px-8 py-3 rounded-md font-label font-bold tracking-wide hover:shadow-[0_0_20px_rgba(255,124,244,0.3)] transition-all">VIEW WORK</button>
+<button class="glass-panel px-8 py-3 rounded-md font-label text-on-surface border border-outline-variant/10 hover:bg-surface-variant transition-all">CONTACT</button>
+</div>
+</div>
+</section>
+<!-- Writer Section -->
+<section class="bg-surface-container-low py-24 relative overflow-hidden" id="writer">
+<div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none font-headline text-9xl">"</div>
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+<h2 class="font-headline text-5xl italic tracking-tighter text-zinc-100">The Writer</h2>
+<span class="font-label text-xs uppercase tracking-[0.3em] text-zinc-500">Narrative &amp; Philosophy</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Project Card 1 -->
+<div class="bg-surface-container-high p-8 rounded-xl space-y-6 border-b-2 border-primary/20 hover:bg-surface-container-highest transition-all group">
+<div class="h-1 bg-primary/30 w-12 group-hover:w-full transition-all duration-500"></div>
+<h3 class="font-headline text-2xl font-semibold italic">The Final Draft</h3>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed">
+                            An experimental long-form essay exploring the decay of digital permanence in an era of hyper-content.
+                        </p>
+<div class="pt-4 flex items-center text-primary text-xs font-label font-bold gap-2">
+                            READ MANUSCRIPT <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-container-high p-8 rounded-xl space-y-6 border-b-2 border-primary/20 hover:bg-surface-container-highest transition-all group mt-8 md:mt-12">
+<div class="h-1 bg-primary/30 w-12 group-hover:w-full transition-all duration-500"></div>
+<h3 class="font-headline text-2xl font-semibold italic">Notes on a Journey</h3>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed">
+                            A collection of travelogues captured during a three-month residency in Kyoto, focusing on silence and space.
+                        </p>
+<div class="pt-4 flex items-center text-primary text-xs font-label font-bold gap-2">
+                            EXPLORE NOTES <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-surface-container-high p-8 rounded-xl space-y-6 border-b-2 border-primary/20 hover:bg-surface-container-highest transition-all group mt-8 md:mt-24">
+<div class="h-1 bg-primary/30 w-12 group-hover:w-full transition-all duration-500"></div>
+<h3 class="font-headline text-2xl font-semibold italic">The Unfinished Manuscript</h3>
+<p class="text-on-surface-variant text-sm font-body leading-relaxed">
+                            A collaborative fiction project hosted entirely on the blockchain, allowing readers to vote on branching paths.
+                        </p>
+<div class="pt-4 flex items-center text-primary text-xs font-label font-bold gap-2">
+                            JOIN THE STORY <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Artist Section -->
+<section class="py-24 max-w-7xl mx-auto px-8" id="artist">
+<div class="flex flex-col md:flex-row-reverse justify-between items-baseline mb-16 gap-4">
+<h2 class="font-headline text-5xl italic tracking-tighter text-zinc-100">The Artist</h2>
+<span class="font-label text-xs uppercase tracking-[0.3em] text-zinc-500">Fiber Arts &amp; Illustration</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+<div class="space-y-4">
+<div class="aspect-square bg-surface-container rounded-xl overflow-hidden relative group">
+<img alt="Fiber Sculpture #4" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" data-alt="Intricate fiber art sculpture featuring woven copper wire and dyed silk threads in a complex organic shape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLQQEX8i7LiUFf0DdilwTJjcIEoJ-XjURhqTjjUvTxxCLklqgTpE-kT6P7YEG_158QIAFBpwk_9mQf8veezvHJFpnyNx-1bw81qsj-650__GdvmxFdqFBJcPeqB-Ugp144KUZLNdAz8XJZXSurx2o0B_5XRA7JVd_Szy0lYXGmcOqqsHIUUacMWmgdsS_snJAlkW0Ua05qU77sV-Co3F8YAJCEJmc9gw2GnWwM00BshQhkTGYteUEh4Mz5btKO9zzDQUQeX0RGsb4"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="px-2">
+<p class="font-label text-[10px] text-secondary tracking-widest uppercase">Series 2023</p>
+<h3 class="font-headline text-xl mt-1">Fiber Sculpture #4</h3>
+</div>
+</div>
+<div class="space-y-4 md:translate-y-20">
+<div class="aspect-[3/4] bg-surface-container rounded-xl overflow-hidden relative group">
+<img alt="Ink Studies" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" data-alt="Abstract ink painting on textured paper with deep black washes and vibrant magenta splashes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEj70ok9duRrcXjpS0lwQFRRkxfLW9l70gE5STQkL4vY-BmMmfZDLbbZ9aw15vvrLPi_KYGkOFFNsRP3TXri_PsL0H8WXb3lrhaHfcfc-HA6tuHfexiR5IKHR7o75uFHAa46VQMuaACeOCHibZqOHSLBJRdEybmL6wpIeJF_h2umsCBlPiCYUBBdgQ37l9vkJimgGHlaWM0hVnMxW_FLKC3-e5csf90XEyOcNtx2GNyIQIrMfYx_dpBgGoKOGNzJUyZyZA5LtEfqU"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="px-2">
+<p class="font-label text-[10px] text-secondary tracking-widest uppercase">Ink &amp; Paper</p>
+<h3 class="font-headline text-xl mt-1">Ink Studies</h3>
+</div>
+</div>
+<div class="space-y-4">
+<div class="aspect-square bg-surface-container rounded-xl overflow-hidden relative group">
+<img alt="The Golden Weaver" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" data-alt="Close up of a traditional loom weaving golden metallic threads into a dark navy blue textile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0FvVPbiOHg1Oqyry32ftYmZBb8vFf3qMsX8m-Bzeknt_lkwANKLZV55RcmjFrWAGnykxhhS7YpgI-FKYapXji4hb7WyJDyCAZrp-kqv4VnDb9gkKKUkaPFAu4OP1CtiSDPsP02goHtl9MvfhSA_DQESC3lkhMwfJ54uoeri8QEi_MLP05vG8CtA9ufbiNbEBwJwbnJKVQxfZk-kSjqjH2XdmcSliObDnvhbwAP17wSpbB5tPSr6PlEW3StzMmtgwdqr2TRcY4jWM"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="px-2">
+<p class="font-label text-[10px] text-secondary tracking-widest uppercase">Commission</p>
+<h3 class="font-headline text-xl mt-1">The Golden Weaver</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Coder Section -->
+<section class="bg-surface-container-low py-32 border-t border-outline-variant/5" id="coder">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex items-center gap-4 mb-16">
+<div class="w-12 h-[1px] bg-secondary"></div>
+<h2 class="font-label text-sm uppercase tracking-[0.4em] text-secondary">The Coder</h2>
+<span class="text-zinc-700 font-label text-sm">System.init()</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Grid Item 1: Terminal Style -->
+<div class="md:col-span-2 bg-zinc-950 p-6 rounded-lg border border-outline-variant/10 font-mono text-xs relative overflow-hidden group">
+<div class="flex gap-2 mb-4">
+<div class="w-2 h-2 rounded-full bg-error-dim"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-dim"></div>
+<div class="w-2 h-2 rounded-full bg-primary-dim"></div>
+</div>
+<div class="space-y-1 text-secondary/70">
+<p>$ status check project_mercury</p>
+<p class="text-zinc-500">&gt; Deploying neural bridge...</p>
+<p class="text-zinc-500">&gt; Synchronizing vectors...</p>
+<p class="text-primary">&gt; [DONE] Active on 4 nodes</p>
+</div>
+<div class="mt-8">
+<h3 class="font-label text-xl text-zinc-100 uppercase tracking-tight">Project Mercury</h3>
+<p class="font-body text-zinc-500 mt-2">A high-performance animation engine for real-time generative art.</p>
+</div>
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-6xl">terminal</span>
+</div>
+</div>
+<!-- Grid Item 2 -->
+<div class="bg-surface-container-high p-6 rounded-lg border border-outline-variant/10 flex flex-col justify-between group hover:border-secondary/30 transition-all">
+<span class="material-symbols-outlined text-secondary text-3xl">grid_view</span>
+<div class="mt-12">
+<h3 class="font-label text-lg text-zinc-100 uppercase tracking-tight">The Grid Engine</h3>
+<p class="font-body text-xs text-zinc-500 mt-1">Spatial optimization for web-based canvas environments.</p>
+</div>
+</div>
+<!-- Grid Item 3 -->
+<div class="bg-surface-container-high p-6 rounded-lg border border-outline-variant/10 flex flex-col justify-between group hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">filter_tilt_shift</span>
+<div class="mt-12">
+<h3 class="font-label text-lg text-zinc-100 uppercase tracking-tight">Pixel Shader Lab</h3>
+<p class="font-body text-xs text-zinc-500 mt-1">GLSL experiments focused on organic flow and light refraction.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-20 bg-zinc-950 border-t border-zinc-800/20">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto gap-8">
+<div class="space-y-2 text-center md:text-left">
+<span class="font-['Newsreader'] text-xl font-semibold text-zinc-200">Jason Tseng</span>
+<p class="font-['Space_Grotesk'] text-sm tracking-wide text-zinc-500">© 2024 Jason Tseng. Built with code and ink.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-zinc-500 hover:text-cyan-400 transition-all duration-300 opacity-80 hover:opacity-100 font-['Space_Grotesk'] text-sm tracking-wide" href="#">Twitter</a>
+<a class="text-zinc-500 hover:text-cyan-400 transition-all duration-300 opacity-80 hover:opacity-100 font-['Space_Grotesk'] text-sm tracking-wide" href="#">GitHub</a>
+<a class="text-zinc-500 hover:text-cyan-400 transition-all duration-300 opacity-80 hover:opacity-100 font-['Space_Grotesk'] text-sm tracking-wide" href="#">Instagram</a>
+</div>
+</div>
+</footer>
+</body></html>

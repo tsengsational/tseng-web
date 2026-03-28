@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;family=Space_Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-dim": "#f364e9",
+              "primary-fixed": "#fc6cf2",
+              "tertiary-fixed-dim": "#ff7a77",
+              "surface-container-low": "#111416",
+              "surface-container-highest": "#232629",
+              "secondary-container": "#00687a",
+              "on-primary-fixed-variant": "#5c005b",
+              "tertiary-container": "#ff7572",
+              "tertiary-fixed": "#ff928d",
+              "on-error": "#490013",
+              "primary-fixed-dim": "#ed5ee4",
+              "error-dim": "#d73357",
+              "inverse-surface": "#f9f9fc",
+              "on-tertiary-fixed-variant": "#750d16",
+              "on-secondary-container": "#ecfaff",
+              "outline-variant": "#46484a",
+              "on-secondary-fixed": "#003a45",
+              "surface": "#0c0e10",
+              "on-tertiary": "#65000d",
+              "on-tertiary-fixed": "#3a0004",
+              "error": "#ff6e84",
+              "outline": "#747578",
+              "background": "#0c0e10",
+              "on-surface": "#eeeef0",
+              "surface-bright": "#292c2f",
+              "on-secondary": "#004551",
+              "on-error-container": "#ffb2b9",
+              "primary": "#ff7cf4",
+              "secondary-fixed": "#63e2ff",
+              "surface-container": "#171a1c",
+              "secondary-dim": "#00c7e7",
+              "surface-dim": "#0c0e10",
+              "primary-container": "#f667ec",
+              "surface-tint": "#ff7cf4",
+              "on-secondary-fixed-variant": "#005968",
+              "on-surface-variant": "#aaabad",
+              "inverse-primary": "#a715a4",
+              "surface-container-lowest": "#000000",
+              "on-tertiary-container": "#4e0008",
+              "on-primary-container": "#440043",
+              "inverse-on-surface": "#535557",
+              "tertiary-dim": "#fc7370",
+              "surface-container-high": "#1d2022",
+              "error-container": "#a70138",
+              "surface-variant": "#232629",
+              "on-background": "#eeeef0",
+              "tertiary": "#ff8d89",
+              "on-primary": "#580057",
+              "secondary": "#1ad6f8",
+              "on-primary-fixed": "#130012",
+              "secondary-fixed-dim": "#1ad6f8"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .prismatic-gradient {
+            background: linear-gradient(135deg, #ff7cf4 0%, #f667ec 100%);
+        }
+        .glass-panel {
+            background: rgba(35, 38, 41, 0.6);
+            backdrop-filter: blur(30px);
+        }
+        .scrim-accent {
+            background: radial-gradient(circle at center, rgba(255, 141, 137, 0.1) 0%, rgba(26, 214, 248, 0.05) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0c0e10]/60 backdrop-blur-xl flex justify-between items-center px-8 py-6 max-w-full shadow-[0_20px_40px_rgba(0,0,0,0.25)]">
+<div class="text-2xl font-['Newsreader'] font-bold text-white tracking-tighter">
+            The Digital Polymath
+        </div>
+<div class="hidden md:flex items-center gap-12">
+<a class="text-[#ff7cf4] border-b-2 border-[#ff7cf4] pb-1 font-bold hover:text-white hover:scale-105 transition-all duration-300" href="#">Writer</a>
+<a class="text-slate-400 font-['Space_Grotesk'] uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Artist</a>
+<a class="text-slate-400 font-['Space_Grotesk'] uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Coder</a>
+<a class="text-slate-400 font-['Space_Grotesk'] uppercase text-xs tracking-widest hover:text-white hover:scale-105 transition-all duration-300" href="#">Studio</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-white hover:scale-110 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto relative overflow-hidden">
+<!-- Background Scrim -->
+<div class="absolute -top-24 -right-24 w-96 h-96 scrim-accent rounded-full blur-3xl -z-10"></div>
+<div class="absolute top-1/2 -left-48 w-[32rem] h-[32rem] bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
+<!-- Editorial Header Section -->
+<header class="mb-20 space-y-8 relative">
+<div class="space-y-2">
+<span class="font-label text-primary text-xs uppercase tracking-[0.3em]">Curation Vol. 01</span>
+<h1 class="font-headline italic text-5xl md:text-7xl lg:text-8xl tracking-tighter text-white leading-tight">
+                    The Writer: <span class="text-primary-dim">Collection</span>
+</h1>
+</div>
+<div class="flex flex-col md:flex-row md:items-end gap-10">
+<p class="font-body text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed font-light">
+                    A digital curatorial atelier exploring the intersection of narrative structure and technical prose. From theoretical manuscripts to speculative fiction, each piece is a study in linguistic architecture.
+                </p>
+<div class="flex flex-col gap-4">
+<div class="flex gap-2">
+<span class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-[10px] uppercase tracking-widest">32 Manuscripts</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface font-label text-[10px] uppercase tracking-widest">Ongoing</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Collection Grid -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Featured Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low p-1 transition-all duration-500 hover:bg-outline-variant/20">
+<div class="relative h-[500px] overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of a vintage typewriter on a dark wooden desk with soft dramatic morning light hitting the paper keys" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaJO-7b3yGQXt5pcC9_Gf-xVc7Hl77bqE5jrFhFpqu1E9FtztiLcxjlFZPZ0n01thkIzKKBP6PENAVqCyLDuZm7LCjtDtiynChn85jdGpcV69jUg2f5w1Ab-AmPd6FWZE27ZHxy1FpbGcJwLcebolP6Ce93LBCwFMatThn7lqGfFvhqa62cf2D_lF3rbP4j9xhy4IlX-C9exPo2SFmXdQPXVk1aLVEMma_QqbUDQD4rV71NzWEJy2IH6n5tjRcWIZ3uTsvfuvbtzo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface/40 to-transparent"></div>
+<div class="absolute bottom-0 p-8 space-y-4">
+<span class="font-label text-secondary text-[10px] uppercase tracking-[0.2em] bg-secondary-container/30 backdrop-blur-md px-3 py-1 rounded">Feature Manuscript</span>
+<h2 class="font-headline text-4xl text-white italic">The Ghost in the Code: A Narrative Inquiry</h2>
+<p class="font-body text-on-surface-variant max-w-md line-clamp-2">An exploration of how synthetic intelligence is reshaping the foundational structures of human storytelling and linguistic evolution.</p>
+<button class="flex items-center gap-3 text-primary font-label text-xs uppercase tracking-widest group/btn">
+                            Read Manuscript
+                            <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-2" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Vertical Stats Card -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<div class="flex-1 bg-surface-container-high rounded-xl p-8 flex flex-col justify-between group transition-colors hover:bg-surface-container-highest">
+<div class="space-y-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_stories">auto_stories</span>
+<h3 class="font-headline text-2xl text-white pt-4">Process &amp; Theory</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Internal essays detailing the methodology behind the 'Polymath' philosophy and creative coding practices.</p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-center text-[10px] font-label text-on-surface-variant uppercase tracking-widest">
+<span>Last Updated</span>
+<span>Oct 2024</span>
+</div>
+</div>
+</div>
+<div class="h-48 rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover grayscale opacity-50 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-80" data-alt="Blurred overhead shot of open books layered on top of each other with warm incandescent lighting creating a cozy academic mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdIUJ6GEvfel5wrN1c-lnWkfKTAnHjnG_nvUmH2sQfHpE5cer45IL-M3g9BimWJusHBqO_s4MjLEe7BobOiGHfjsTCadcIT-TsV-BFsspYFMffABfFDh3RglY9W_iHdRbMSdMw8BnrG6cuXa9sJFhxGGKIZmyX5KViEjnYapwmxXD95GHpyPRLybM39juIg9oe1d9eqRPazJ0XoFs8b7GPacMnDft2Nz1A_KLjtaO0elDryvQ0XBZg66g5G9XeDErgT2CEQdWEKjU"/>
+<div class="absolute inset-0 flex items-center justify-center glass-panel">
+<div class="text-center space-y-1">
+<span class="font-headline text-3xl text-white italic">Archives</span>
+<p class="font-label text-[10px] text-primary uppercase tracking-widest">Explore History</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Standard Grid Items -->
+<div class="md:col-span-4 bg-surface-container-high rounded-xl overflow-hidden group hover:bg-surface-container-highest transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Minimalist desk setup with a thin laptop and a glass of water reflecting soft blue digital light in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFbZsLOCjX-zxvsvfJw2dpw4UThDrCHhCQc_51xdJhg_A23MK9FzJV7HpR769YrANqSrU93Ic1rEbj611QBwxofPPD9uETU8gGSxDp7RtPouecStqkLplCskNMgLVWwEW2iVoJ4tKBQ5Qho8WT6J-ob9thmVQP0cAu0fwKvL1lQCnivf0OzZK4pbXI8VrP-WETVAi-gF0M_cKkNIeTgl3vlXEghKC7fJQEcqNckl--1bAWaRkAjLtluURIOQOGwtAtAtTgIXw8tXo"/>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<h4 class="font-headline text-xl text-white">Digital Metaphysics</h4>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="bookmark">bookmark</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3">A collection of short-form essays exploring the tangible nature of digital objects and the permanence of code-based art.</p>
+<div class="pt-2 flex gap-2">
+<span class="font-label text-[9px] text-secondary border border-secondary/20 px-2 py-0.5 rounded uppercase">Essay</span>
+<span class="font-label text-[9px] text-on-surface-variant px-2 py-0.5 rounded uppercase">12 min read</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-high rounded-xl overflow-hidden group hover:bg-surface-container-highest transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Detailed close-up of ink spreading through water creating ethereal smoke-like shapes in shades of deep violet and blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU4KRfDAW3CK0I0ZtcWQrOFRbznIml5qWjbVvB9qP7WtYP_ie6XgJDwOs3NaJITwB_9riEoDmqLU-lBrb5eV-ZPAoo0oQnDRX1R7jT9L00YipnIFjwMPulKz2O6nDZaYYx7ODqqEUTVBCSTDPhDwaiCITgBELWBACBl1pC9cfOBFdesovkmYQJqH7IxR5obs-EGfEQwTYWuhmE5N6G8RLVCtfXyQqLhx_bmC3MvT--zzUI-lqYgJoAgndENyEjCTnEuUwxdxUNd3U"/>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<h4 class="font-headline text-xl text-white">The Ink of Logic</h4>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="bookmark">bookmark</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3">Reflections on how programming languages act as a new form of literary expression for the modern age.</p>
+<div class="pt-2 flex gap-2">
+<span class="font-label text-[9px] text-secondary border border-secondary/20 px-2 py-0.5 rounded uppercase">Poetry</span>
+<span class="font-label text-[9px] text-on-surface-variant px-2 py-0.5 rounded uppercase">Ongoing</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-high rounded-xl overflow-hidden group hover:bg-surface-container-highest transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A stack of aged parchment papers bound with thin twine resting on a modern glass surface with prismatic light refractions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA16bVKeybaj7TtUCgr9DJUQ5Dojacr1-NskbfD1TZy_q1MsKNfpANJdaVBRUp9Pn8-cl6bpzWfWFT4YDEE0x6WEY6U4tT14vyE2UDRhPvZOuS8yp6n0ixGdbSXLewqxa83-EIsqfU1_02UqcOOjwN87ew5P5_OwultrEnUA5iEBvpLUShvhCbvYoV3HFbQuA3JmXmZ4NiK61auQMJHkL5eZD7WS-hCLKR9YdhfE-5w3POBA8H4nnZgsdK8ZKsvg6bWAQu4zJ_sTks"/>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<h4 class="font-headline text-xl text-white">Analog Roots</h4>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="bookmark">bookmark</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3">Bridging the gap between traditional tactile writing and the hyper-fluid nature of modern markdown authorship.</p>
+<div class="pt-2 flex gap-2">
+<span class="font-label text-[9px] text-secondary border border-secondary/20 px-2 py-0.5 rounded uppercase">Research</span>
+<span class="font-label text-[9px] text-on-surface-variant px-2 py-0.5 rounded uppercase">Published</span>
+</div>
+</div>
+</div>
+<!-- Asymmetrical Quote Section -->
+<div class="md:col-span-12 py-16 px-8 my-12 border-y border-outline-variant/10 flex flex-col items-center text-center space-y-8">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="format_quote">format_quote</span>
+<blockquote class="font-headline italic text-3xl md:text-5xl text-white max-w-4xl leading-tight">
+                    "Writing is the slow-motion performance of thought, where every syntax is a stroke and every semicolon a breath."
+                </blockquote>
+<cite class="font-label text-xs uppercase tracking-[0.4em] text-on-surface-variant">— The Polymath's Journal</cite>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 border-t border-[#46484a]/15 bg-[#0c0e10]">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full">
+<div class="text-lg font-black text-white">The Digital Polymath</div>
+<div class="flex gap-12">
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Archives</a>
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Process</a>
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Contact</a>
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-slate-500 hover:text-[#1ad6f8] transition-colors duration-300" href="#">Privacy</a>
+</div>
+<div class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-slate-500">
+                © 2024 The Digital Polymath. Built with code, art, and prose.
+            </div>
+</div>
+</footer>
+<!-- FAB (Suppressed on this editorial page as per context rules, but included for system logic if navigation is primary) -->
+<!-- Not rendering FAB on Collection/Gallery views to prioritize visual grid flow -->
+</body></html>

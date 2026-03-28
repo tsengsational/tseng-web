@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jason Tseng | Creative Lab</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffefef",
+              "error": "#b41340",
+              "on-secondary-fixed": "#550e71",
+              "inverse-primary": "#fc6cf2",
+              "surface-container-high": "#e1e2e5",
+              "surface-variant": "#dbdde0",
+              "secondary-fixed-dim": "#ebadff",
+              "tertiary": "#005ab3",
+              "tertiary-container": "#84b1ff",
+              "on-secondary-fixed-variant": "#753290",
+              "error-container": "#f74b6d",
+              "secondary-fixed": "#f2c1ff",
+              "on-secondary": "#ffedff",
+              "secondary": "#813e9c",
+              "background": "#f6f6f8",
+              "surface-bright": "#f6f6f8",
+              "tertiary-fixed": "#84b1ff",
+              "on-surface-variant": "#5a5c5d",
+              "on-primary-fixed": "#130012",
+              "outline": "#757779",
+              "on-primary-fixed-variant": "#5c005b",
+              "on-tertiary-fixed": "#001737",
+              "on-tertiary-container": "#003064",
+              "surface-container": "#e7e8ea",
+              "primary-fixed-dim": "#ed5ee4",
+              "error-dim": "#a70138",
+              "surface-container-low": "#f0f1f3",
+              "surface-container-highest": "#dbdde0",
+              "primary-dim": "#90008e",
+              "on-surface": "#2d2f31",
+              "inverse-surface": "#0c0e10",
+              "on-secondary-container": "#6b2886",
+              "secondary-container": "#f2c1ff",
+              "on-error-container": "#510017",
+              "on-primary-container": "#4d004c",
+              "on-primary": "#ffeef8",
+              "on-tertiary-fixed-variant": "#003875",
+              "on-tertiary": "#eff2ff",
+              "primary-fixed": "#fc6cf2",
+              "primary-container": "#fc6cf2",
+              "inverse-on-surface": "#9c9d9f",
+              "outline-variant": "#acadaf",
+              "primary": "#a20da0",
+              "surface-container-lowest": "#ffffff",
+              "surface-tint": "#a20da0",
+              "surface": "#f6f6f8",
+              "tertiary-fixed-dim": "#6ba3ff",
+              "secondary-dim": "#74318f",
+              "surface-dim": "#d2d4d8",
+              "tertiary-dim": "#004e9d",
+              "on-background": "#2d2f31"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .serif { font-family: 'Newsreader', serif; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(252, 108, 242, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center px-6 md:px-12 py-4 max-w-screen-2xl mx-auto relative">
+<a class="text-2xl font-serif italic tracking-tight text-slate-900" href="#">Jason Tseng</a>
+<div class="hidden md:flex items-center space-gap-8 gap-8">
+<a class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#writer">Writer</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#artist">Artist</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#coder">Coder</a>
+<a class="text-slate-600 hover:text-slate-900 transition-colors font-medium" href="#about">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50/50 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+</div>
+<div class="bg-slate-100/50 h-[1px] w-full absolute bottom-0 left-0"></div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="pt-32 pb-20 px-6 md:px-12 hero-gradient">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-12">
+<div class="w-full md:w-1/2">
+<h1 class="serif italic text-5xl md:text-7xl leading-tight text-on-surface mb-6">
+                    Welcome to the <br/>
+<span class="text-primary">Creative Lab</span> of <br/>
+                    Jason Tseng.
+                </h1>
+<p class="text-lg text-on-surface-variant font-medium max-w-md mb-8 leading-relaxed">
+                    A multidisciplinary practitioner bridging the gaps between narrative, craft, and code. Exploring the human condition through texture and logic.
+                </p>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-lg font-bold shadow-lg shadow-primary/20 hover:scale-95 transition-transform">
+                        Explore Portfolio
+                    </button>
+<button class="px-8 py-3 bg-surface-container-low border border-outline-variant/20 text-on-surface rounded-lg font-bold hover:bg-surface-container transition-colors">
+                        Get in Touch
+                    </button>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative">
+<div class="aspect-square rounded-xl overflow-hidden shadow-2xl relative z-10 bg-surface-container-low">
+<img alt="Jason Tseng" class="w-full h-full object-cover" data-alt="professional portrait of a creative man with a friendly expression in a brightly lit studio with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt0_svXdBAIfCGNY2lfqqyUGG6Q-1VI2u2HtWplCcASUQL9FY1F445P0iAgzCRbx8g4ID1GaFjA3BWfKda5cfP7Tan5tcK4EU9xeDFbvIIjAO2_4QBtuVbxj4j7PaYxeO5oS5iVdPvIIJUyZLd376psFnktO41fQRAeiE9l-Rr2VQQY-hbJefClZqlr-BkJf_bb2DZnnr5R88OrjKQgVRtDbB_BdgTUmU5BkB15fUa_UZzX0fqzjOoDzXo8L5OLrWy-dOrBegdDZQ"/>
+</div>
+<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-secondary-fixed/30 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -top-6 -left-6 w-40 h-40 bg-primary-fixed/20 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Section: Writer -->
+<section class="py-24 px-6 md:px-12 bg-white" id="writer">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex items-end justify-between mb-16">
+<div>
+<span class="text-xs font-bold tracking-[0.2em] text-primary uppercase mb-4 block">Archive 01</span>
+<h2 class="serif italic text-4xl md:text-5xl text-on-surface">The Writer</h2>
+</div>
+<div class="hidden md:block w-1/3 h-[1px] bg-outline-variant/20 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+<div class="md:col-span-4 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between">
+<div class="mb-12">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="edit_note">edit_note</span>
+<p class="serif text-xl italic leading-relaxed text-on-surface">
+                            "In the click-clack of keys and the smell of aged paper, I find the rhythm of stories untold."
+                        </p>
+</div>
+<img alt="Typewriter" class="rounded-lg h-48 w-full object-cover opacity-80 mix-blend-multiply" data-alt="close up of a vintage typewriter on a wooden desk with loose sheets of cream colored paper and soft afternoon sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOzGAF9zZQnIrS8Ze2bumXW6ldLaysh0fiTsY84WosCgs7kdFJFV7SUOz0PljkWLqYUQxoQ56ULMkq9UnCjcUhsh25fawbu9JodtxNV43950KUUrp78_wX9Wx9Jq1T4xmNV2YzJSkVTjM2cidiPdqPeOaP3J4siTeoVZwnTvZxLdndWXuT90M74TEeBiKr8znSJOyrX-8ygCWxIgFVBoxaZzzcACtqJMLAF8hUCTLdATXNeqiPgNpFcTzOsvgxtegyAnvhTl5LCl0"/>
+</div>
+<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-surface-container-low transition-transform duration-300 group-hover:scale-[1.02]">
+<img class="w-full h-full object-cover group-hover:opacity-90 transition-opacity" data-alt="starry night sky over a quiet mountain range with deep blue and purple hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjCOvYUzWn2Z96xIJqUVROn4Of5Pn82T6lYgedTqFmXhADv4ouU5Bz4-J5TdscjfFjY-8zHr7X24q6xD41P8yadZmmtBXlaxhYskEfa8NkMssWJO6jgLbkGPUqTktK45D8n9QVs5j_szawIGcuJARHpEx62tf591yCsCFGpow16GtL6Vs1Njl_t9D29gmE-BymFuw-NBnk8x_I-0zYq-_5cAU8EZOeUZiZ8uvxnvjfaOjER3X3ttJpbLG0qRdQYW72OMu9wDGVacU"/>
+</div>
+<h3 class="font-bold text-lg text-on-surface mb-1">Starlight Epistles</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2">A collection of short fiction exploring isolation in a connected galaxy.</p>
+</div>
+<!-- Project Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-surface-container-low transition-transform duration-300 group-hover:scale-[1.02]">
+<img class="w-full h-full object-cover group-hover:opacity-90 transition-opacity" data-alt="stacks of antique books in a dimly lit library with dust motes dancing in sunbeams" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSoDygrOO_K0zQDOGfq2ai0Ngl74WijOOmcIzXiUhkUf-CYhDkCkUWaMcNpnzk0yafV1GQk9DFzXTr4A_v3CjtLaYp-5AGVvy6CzATLD4EE7Zt3KXPD2e-xMmPLcw1oYhilT6mm8i-xqnrfaoC--qWUOePVap9dWJp5r3V6D7fG4jiV1g3gByYhaq-n0o_BEKaAVZ01FzqxMbPOMlfOr90AzaJ0p7z5400UoJ0rEGPk8-0cfERDjAMJMsOhmYmC3Yj3G9_ENi3CV0"/>
+</div>
+<h3 class="font-bold text-lg text-on-surface mb-1">The Paper Archives</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2">Investigative journalism series on the history of analog record keeping.</p>
+</div>
+<!-- Project Card 3 -->
+<div class="group cursor-pointer md:col-span-2">
+<div class="aspect-[21/9] rounded-xl overflow-hidden mb-4 bg-surface-container-low transition-transform duration-300 group-hover:scale-[1.01]">
+<img class="w-full h-full object-cover group-hover:opacity-90 transition-opacity" data-alt="overhead view of an open notebook with elegant cursive handwriting and a black fountain pen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeV4jtZ1nh9cdbRNQCD2_GNnU57AFUhQ5vorfH83mWoXsQkJKzHaAtriMAHoQ_2SbANMX7nGl3YVNN3LKzb5eTlEHimUrmEFcg6n0hha9kw0smmWIoXQMjxO4GreY7fRHq1rAkqtknkRMRg7w7pHnN0p1KlhqQH_gyXoCiRpS_eRb0kvMy7D-gvFmtKHkyl-3MRE61h68qw1OxNZLtKLjBTqhQDznDenK21dC6jtKxa8iR9-qXw7vNdOqJ5b0kpq6tUKuueLeWfXA"/>
+</div>
+<h3 class="font-bold text-lg text-on-surface mb-1">Scripted Realities</h3>
+<p class="text-sm text-on-surface-variant">A long-form essay on the intersection of personal myth-making and digital personas.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Artist -->
+<section class="py-24 px-6 md:px-12 bg-surface-container-low" id="artist">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex items-end flex-row-reverse justify-between mb-16">
+<div class="text-right">
+<span class="text-xs font-bold tracking-[0.2em] text-secondary-dim uppercase mb-4 block">Archive 02</span>
+<h2 class="serif italic text-4xl md:text-5xl text-on-surface">The Artist</h2>
+</div>
+<div class="hidden md:block w-1/3 h-[1px] bg-outline-variant/20 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 relative group cursor-pointer overflow-hidden rounded-2xl h-[600px] shadow-xl">
+<img alt="Fiber Art" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="vibrant abstract fiber art with interwoven textures of wool, silk, and cotton in shades of pink, coral, and violet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN1c2vCbpJBzAPVvahbGMCdpH8RlvXmrI_nqaMnGmBSYZtXxL1wRxDxT__9mkUjdMNH1gIFsaNVIhbx7r0ERAoqxfRxBP_0c1wojyxGeeKIVqddw4V7CBaPJ-DG5bQEXVllAxfmJaXlNFdIlOP_aHgo2imCIiZBsY7UCUETCE8o7SLLwiAshuArLsdPJ7CuMKhYnkreyQxH0fLTG_Sn4cKLgc1AEIVQNruY8gb_M-nhXD79qlFUr-5Cb2vtZaVj__flIkzMHqusds"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 p-10">
+<div class="glass p-6 rounded-xl border border-white/20">
+<h3 class="serif text-3xl italic text-on-surface mb-2">Tactile Geometry</h3>
+<p class="text-on-surface-variant font-medium">A series of large-scale textile installations exploring mathematical patterns in nature.</p>
+</div>
+</div>
+</div>
+<!-- Vertical Cards Cluster -->
+<div class="flex flex-col gap-8">
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-container-lowest transition-all duration-300 group-hover:shadow-lg">
+<img class="w-full h-full object-cover" data-alt="paintbrushes with colorful tips resting on a messy artist palette with pink and orange swirls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjA2PtCR-_LBP6pGuG1f9_DYL7znJR6QSvk5oWsa5inHS40Xw-3jHTS6qD9WbNhY_8iRhaseEAA9f1XAQYB6dEb0Nass0FpBWn7dYGfwQplg-EUBZGDGPvim5aJzi6QXISyy6qINPy-AnTzWq0MDQtzfszbpuXx16latgcc0tPCDN-gIIA_iz4JysDPlZGV9xzGiFG_YPWECAy4lXYABRP-mNyi9pFzAAJAYzohVVzyVOtxHiPc0Bd_Z9Mji705LA36hHBLsoW3WU"/>
+</div>
+<h3 class="font-bold text-lg text-on-surface mb-1">Chroma Studies</h3>
+<p class="text-sm text-on-surface-variant">Daily experiments in color theory and pigment behavior.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-container-lowest transition-all duration-300 group-hover:shadow-lg">
+<img class="w-full h-full object-cover" data-alt="close up of intricate embroidery on linen with delicate floral patterns and soft pastel threads" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBirIgU9wj-ZLCHEAaRvE2q1eJSDPXedSVNFkgT3A6XbjnOPz094POAiEXI9GYMYIb4IPAfkHOeii8YBYEuqM-SpjZBwlHUCy2Atu7ZjbWnVIjnOAfhxz0AVGa2Ql9vT4-6i9AA7RQZlL6L1RWu_5mQ54O3SXGsLWVszbvFFQMVA8A3lFtDUm8tfUG4mVeIMDlUlvm_Jd3_KjpjyoMcrIzv8QxW4Fy19SMoiRFy2ErZtk0KwtertYHYFQysv_sBF1phB_LE2N14XXs"/>
+</div>
+<h3 class="font-bold text-lg text-on-surface mb-1">Threaded Silence</h3>
+<p class="text-sm text-on-surface-variant">Minimalist embroidery pieces capturing moments of stillness.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Coder -->
+<section class="py-24 px-6 md:px-12 bg-white" id="coder">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex items-end justify-between mb-16">
+<div>
+<span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase mb-4 block">Archive 03</span>
+<h2 class="serif italic text-4xl md:text-5xl text-on-surface">The Coder</h2>
+</div>
+<div class="hidden md:block w-1/3 h-[1px] bg-outline-variant/20 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Bento Grid Style -->
+<div class="md:col-span-2 md:row-span-2 bg-slate-900 rounded-2xl p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-mono mb-6">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+                            SYSTEM_ACTIVE
+                        </div>
+<h3 class="text-white text-3xl font-bold mb-4">Neural Canvas</h3>
+<p class="text-slate-400 font-medium leading-relaxed">An AI-driven interface that generates generative art based on semantic literary analysis. Built with React and Three.js.</p>
+</div>
+<div class="mt-8 relative z-10">
+<button class="flex items-center gap-2 text-tertiary-container font-bold hover:gap-4 transition-all">
+                            View Repository <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Background code texture -->
+<div class="absolute inset-0 opacity-10 font-mono text-[10px] text-white p-4 leading-tight pointer-events-none select-none overflow-hidden">
+                        const canvas = document.getElementById('neural');<br/>
+                        const ctx = canvas.getContext('2d');<br/>
+                        function animate() {<br/>
+                          requestAnimationFrame(animate);<br/>
+                          particles.forEach(p =&gt; p.update());<br/>
+                        }<br/>
+                        // Logic flow...<br/>
+                        const cluster = new GridSystem({<br/>
+                          resolution: 64,<br/>
+                          decay: 0.98<br/>
+                        });
+                    </div>
+</div>
+<div class="md:col-span-2 bg-surface-container-low rounded-2xl p-8 group border border-transparent hover:border-tertiary/20 transition-all">
+<div class="flex items-start justify-between mb-8">
+<div>
+<h3 class="font-bold text-xl text-on-surface mb-2">Ghost Interface</h3>
+<p class="text-sm text-on-surface-variant">Experimental UI design system focusing on extreme legibility and minimal chrome.</p>
+</div>
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="layers">layers</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-3/4"></div>
+</div>
+</div>
+<div class="bg-tertiary-container/10 rounded-2xl p-8 group hover:bg-tertiary-container/20 transition-all">
+<span class="material-symbols-outlined text-tertiary mb-4" data-icon="terminal">terminal</span>
+<h3 class="font-bold text-lg text-on-surface mb-1">Kernel.sh</h3>
+<p class="text-xs text-on-surface-variant">Custom terminal-based portfolio viewer for SSH enthusiasts.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-8 group hover:bg-surface-container-lowest transition-all">
+<span class="material-symbols-outlined text-tertiary mb-4" data-icon="data_object">data_object</span>
+<h3 class="font-bold text-lg text-on-surface mb-1">Lexicon API</h3>
+<p class="text-xs text-on-surface-variant">A RESTful service for retrieving archaic and forgotten literary terms.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full pt-20 pb-10 border-t border-slate-200/50">
+<div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 w-full max-w-screen-2xl mx-auto">
+<div class="mb-8 md:mb-0">
+<a class="font-serif text-3xl italic text-slate-900" href="#">Jason Tseng</a>
+<p class="text-slate-500 text-sm mt-2 font-sans uppercase tracking-wide">© 2024 Jason Tseng. Built with intent.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-sans text-sm tracking-wide uppercase text-slate-500 hover:text-[#a20da0] transition-colors hover:translate-x-1 transition-transform duration-200" href="#">Writer</a>
+<a class="font-sans text-sm tracking-wide uppercase text-slate-500 hover:text-[#a20da0] transition-colors hover:translate-x-1 transition-transform duration-200" href="#">Artist</a>
+<a class="font-sans text-sm tracking-wide uppercase text-slate-500 hover:text-[#a20da0] transition-colors hover:translate-x-1 transition-transform duration-200" href="#">Coder</a>
+<a class="font-sans text-sm tracking-wide uppercase text-slate-500 hover:text-[#a20da0] transition-colors hover:translate-x-1 transition-transform duration-200" href="#">About</a>
+<a class="font-sans text-sm tracking-wide uppercase text-slate-500 hover:text-[#a20da0] transition-colors hover:translate-x-1 transition-transform duration-200" href="#">LinkedIn</a>
+</div>
+</div>
+<div class="mt-12 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                Curated for Excellence
+            </div>
+</div>
+</footer>
+</body></html>
