@@ -32,6 +32,6 @@ services:
       ADMIN_PASSWORD: "admin"
       # Disable CORS issues during local dev
       CORS_ENABLED: "true"
-      CORS_ORIGIN: "http://localhost:5173"
+      CORS_ORIGIN: "true"
 volumes:
   db-data:

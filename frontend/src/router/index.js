@@ -4,7 +4,8 @@ import Home from '../views/Home.vue'
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/category/:role', name: 'Category', component: () => import('../views/CategoryView.vue') },
-  { path: '/project/:id', name: 'ProjectDetails', component: () => import('../views/ProjectDetails.vue') }
+  { path: '/project/:id', name: 'ProjectDetails', component: () => import('../views/ProjectDetails.vue') },
+  { path: '/tag/:id', name: 'TagDetails', component: () => import('../views/TagView.vue') }
 ]
 
 const router = createRouter({
