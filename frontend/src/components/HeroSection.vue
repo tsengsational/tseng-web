@@ -1,6 +1,6 @@
 <template>
-  <div class="hero relative overflow-hidden pt-32 pb-24 sm:pb-32 lg:pb-48 rounded-xl shadow-2xl mx-4 sm:mx-0 mt-4 sm:mt-8 bg-slate-950">
-    <div class="hero__background absolute inset-0 z-0 overflow-hidden rounded-xl" aria-hidden="true">
+  <div class="hero relative  pt-32 pb-24 sm:pb-32 lg:pb-48 rounded-xl shadow-2xl mx-4 sm:mx-0 mt-4 sm:mt-8 bg-slate-950">
+    <div class="hero__background absolute inset-0 z-0 rounded-xl" aria-hidden="true">
       <AnimatedMeshGradient />
     </div>
     <div class="hero__container relative z-10 mx-auto max-w-7xl px-6 lg:px-8">

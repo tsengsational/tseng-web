@@ -11,7 +11,18 @@
     </div>
     <div class="project-card__content p-6 flex flex-col flex-grow">
       <h3 class="project-card__title text-xl font-bold text-slate-900 dark:text-slate-50 mb-2 leading-tight">{{ project.title }}</h3>
-      <p class="project-card__description text-sm text-slate-600 dark:text-slate-300 line-clamp-3 mb-6 flex-grow">{{ project.description }}</p>
+      <p class="project-card__description text-sm text-slate-600 dark:text-slate-300 line-clamp-3 mb-4 flex-grow">{{ project.description }}</p>
+
+      <div v-if="project.tags && project.tags.length > 0" class="project-card__tags-container flex flex-wrap gap-2 mb-4">
+        <span 
+          v-for="t in project.tags" 
+          :key="t.tags_id.name" 
+          class="project-card__tag text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 border border-slate-200/50 dark:border-slate-600/50"
+        >
+          {{ t.tags_id.name }}
+        </span>
+      </div>
+
       <router-link :to="{ name: 'ProjectDetails', params: { id: project.id } }" class="project-card__link inline-flex w-fit items-center text-sm font-semibold text-brand-600 dark:text-brand-400 transition-colors hover:text-brand-800 dark:hover:text-brand-300">
         See More
         <svg class="project-card__link-icon ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

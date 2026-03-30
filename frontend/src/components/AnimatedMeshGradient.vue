@@ -216,7 +216,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute inset-0 z-0 overflow-hidden bg-slate-900">
+  <div class="absolute inset-0 z-0  bg-slate-900">
     <!-- WebGL Canvas Anchor -->
     <div ref="canvasContainer" class="absolute inset-[-10%] w-[120%] h-[120%] pointer-events-none opacity-100 z-0" style="filter: blur(90px); transform: translate3d(0, 0, 0); will-change: transform;"></div>
     

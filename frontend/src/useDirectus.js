@@ -10,7 +10,7 @@ export async function fetchFeaturedProjects() {
         filter: {
           is_featured: { _eq: true }
         },
-        fields: ['*'],
+        fields: ['*', 'tags.tags_id.name'],
       })
     );
     return projects;
