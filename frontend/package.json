@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@directus/sdk": "^17.0.0",
+    "three": "^0.183.2",
     "vue": "^3.4.21",
     "vue-router": "^4.6.4"
   },
