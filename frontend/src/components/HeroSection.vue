@@ -17,7 +17,7 @@
         <p class="hero__description mt-6 text-xl tracking-tight text-slate-300 font-medium leading-8 mb-8 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
           Writer, Artist, and Coder creating experiences that blend technology with imagination.
         </p>
-        <SocialLinks theme="dark" class="justify-center drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]" />
+        <SocialLinks theme="dark" class="justify-center" />
       </div>
     </div>
   </div>

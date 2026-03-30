@@ -45,7 +45,7 @@ const props = defineProps({
 });
 
 const linkClass = computed(() => {
-  const base = "social-links__link flex items-center transition-all transform hover:scale-105 duration-200 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10";
+  const base = "social-links__link flex items-center transition-all transform hover:scale-105 duration-200 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.5)]";
   return props.theme === 'dark' 
     ? `${base} text-slate-300 hover:text-white`
     : `${base} text-brand-600 hover:text-brand-900 border-brand-100 bg-brand-50/50`;
