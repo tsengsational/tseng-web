@@ -35,7 +35,7 @@
 
         <div class="project-details__hero-image-wrapper mt-12 relative group overflow-hidden rounded-3xl shadow-2xl dark:shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
           <div class="project-details__image-aspect aspect-[21/9] w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
-            <img v-if="imageUrl" :src="imageUrl" :alt="project.title" class="project-details__hero-image w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            <img v-if="imageUrl" :src="imageUrl" :alt="project.title" class="project-details__hero-image w-full h-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             <div v-else class="project-details__image-placeholder w-full h-full bg-gradient-to-br from-[#a20da0] to-[#fc6cf2] dark:from-brand-900 dark:to-slate-800 opacity-20"></div>
           </div>
           
@@ -54,11 +54,26 @@
               <h2 v-else-if="block.type === 'header' && block.data.level === 2" v-html="block.data.text" class="project-details__heading-2 text-3xl italic font-serif mb-6 text-[#2d2f31] dark:text-slate-100"></h2>
               <h3 v-else-if="block.type === 'header' && block.data.level === 3" v-html="block.data.text" class="project-details__heading-3 text-2xl font-semibold mb-4 text-[#2d2f31] dark:text-slate-200"></h3>
               <p v-else-if="block.type === 'paragraph'" v-html="block.data.text" class="project-details__paragraph text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-6"></p>
-              <ul v-else-if="block.type === 'list' && block.data.style === 'unordered'" class="project-details__list project-details__list--unordered list-disc list-inside text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-6 space-y-2">
-                <li v-for="(item, i) in block.data.items" :key="i" v-html="item" class="project-details__list-item text-[#2d2f31] dark:text-slate-300"></li>
+              <!-- List Handling -->
+              <ul v-else-if="(block.type === 'list' || block.type === 'nestedlist') && block.data.style === 'unordered'" class="project-details__list project-details__list--unordered list-disc list-inside text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-6 space-y-2">
+                <li v-for="(item, i) in block.data.items" :key="i" class="project-details__list-item text-[#2d2f31] dark:text-slate-300">
+                  <span v-html="typeof item === 'string' ? item : item.content"></span>
+                  <ul v-if="item.items && item.items.length > 0" class="ml-6 mt-2 list-circle space-y-2">
+                    <li v-for="(subItem, si) in item.items" :key="si" class="project-details__sub-list-item">
+                      <span v-html="typeof subItem === 'string' ? subItem : subItem.content"></span>
+                    </li>
+                  </ul>
+                </li>
               </ul>
-              <ol v-else-if="block.type === 'list' && block.data.style === 'ordered'" class="project-details__list project-details__list--ordered list-decimal list-inside text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-6 space-y-2">
-                <li v-for="(item, i) in block.data.items" :key="i" v-html="item" class="project-details__list-item text-[#2d2f31] dark:text-slate-300"></li>
+              <ol v-else-if="(block.type === 'list' || block.type === 'nestedlist') && block.data.style === 'ordered'" class="project-details__list project-details__list--ordered list-decimal list-inside text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-6 space-y-2">
+                <li v-for="(item, i) in block.data.items" :key="i" class="project-details__list-item text-[#2d2f31] dark:text-slate-300">
+                  <span v-html="typeof item === 'string' ? item : item.content"></span>
+                  <ol v-if="item.items && item.items.length > 0" class="ml-6 mt-2 list-decimal space-y-2">
+                    <li v-for="(subItem, si) in item.items" :key="si" class="project-details__sub-list-item">
+                      <span v-html="typeof subItem === 'string' ? subItem : subItem.content"></span>
+                    </li>
+                  </ol>
+                </li>
               </ol>
               <div v-else-if="block.type === 'image'" class="project-details__content-image-wrapper my-10 rounded-3xl overflow-hidden shadow-xl dark:shadow-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <img :src="getImageUrl(block.data.file?.url)" :alt="block.data.caption" class="project-details__content-image w-full h-auto object-cover" />
