@@ -26,7 +26,7 @@
             </div>
           </div>
           <a v-if="project.link" :href="project.link" target="_blank" rel="noopener noreferrer" class="project-details__external-link shrink-0 mb-2 inline-flex items-center px-6 py-3 bg-[#a20da0] dark:bg-brand-600 text-white text-sm font-semibold rounded-full shadow-lg hover:bg-[#fc6cf2] dark:hover:bg-brand-500 transition-colors">
-            Visit Project 
+            {{ project.link_text || 'Visit Project' }} 
             <svg class="project-details__link-icon ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
