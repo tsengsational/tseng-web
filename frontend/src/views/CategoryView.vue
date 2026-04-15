@@ -20,7 +20,7 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { fetchFeaturedProjects } from '../useDirectus';
+import { fetchProjectsByRole } from '../useDirectus';
 import ProjectCard from '../components/ProjectCard.vue';
 
 const route = useRoute();
@@ -30,8 +30,7 @@ const loading = ref(true);
 
 const load = async () => {
   loading.value = true;
-  const all = await fetchFeaturedProjects();
-  projects.value = all.filter(p => p.role === role.value);
+  projects.value = await fetchProjectsByRole(role.value);
   loading.value = false;
 };
 
