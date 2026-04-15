@@ -33,5 +33,13 @@ services:
       # Disable CORS issues during local dev
       CORS_ENABLED: "true"
       CORS_ORIGIN: "true"
+      # Email via Resend SMTP
+      EMAIL_TRANSPORT: "smtp"
+      EMAIL_SMTP_HOST: "smtp.resend.com"
+      EMAIL_SMTP_PORT: "587"
+      EMAIL_SMTP_SECURE: "false"
+      EMAIL_SMTP_USER: "resend"
+      EMAIL_SMTP_PASSWORD: "${RESEND_API_KEY}"
+      EMAIL_FROM: "${EMAIL_FROM}"
 volumes:
   db-data:

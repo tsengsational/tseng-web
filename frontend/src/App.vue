@@ -7,6 +7,7 @@
           <router-link :to="{ name: 'Category', params: { role: 'Writer' } }" class="nav__link text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium text-sm uppercase tracking-wider">Writer</router-link>
           <router-link :to="{ name: 'Category', params: { role: 'Artist' } }" class="nav__link text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium text-sm uppercase tracking-wider">Artist</router-link>
           <router-link :to="{ name: 'Category', params: { role: 'Coder' } }" class="nav__link text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium text-sm uppercase tracking-wider">Coder</router-link>
+          <router-link :to="{ name: 'Contact' }" class="nav__link text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium text-sm uppercase tracking-wider">Contact</router-link>
         </div>
       </div>
     </nav>
