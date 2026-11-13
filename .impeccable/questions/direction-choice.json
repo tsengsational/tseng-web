@@ -1,0 +1,150 @@
+{
+  "title": "Choose the visual direction for Jason Tseng's Portfolio",
+  "question": "The roll assigned The Draftsman's Atelier (Architectural Studio Archive). Choose this direction, inspect the competitive alternate, or steer.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Draftsman's Atelier",
+      "kicker": "THE ROLL",
+      "lineage": "Architectural studio blueprint and master draftsman archive",
+      "thesis": "Structural blueprint (Coder), expressive gestural draft (Artist), and programmatic notes (Writer) sharing one tactile, high-craft atelier plane.",
+      "palette": [
+        "#0a1128",
+        "#1c2541",
+        "#48cae4",
+        "#f4f5f6",
+        "#e0a96d"
+      ],
+      "materials": [
+        "blueprint cyanotype",
+        "drafting vellum",
+        "hairline ruling pen",
+        "precision coordinate grid"
+      ],
+      "viewport": "Architectural header with registration coordinates and triad status; interactive WebGL mesh drafting field responding to the active discipline; high-contrast editorial typography with marginalia.",
+      "risk": "Can veer too clinical if drafting geometry overpowers the warmth of the writing and visual artwork.",
+      "raised": [
+        {
+          "from": "craft-making-lowicz-layered-papercut",
+          "raise": "Depth is created through crisp structural plane overlaps and hairline drafting borders rather than generic blurry box-shadows."
+        },
+        {
+          "from": "kraftwerk-man-machine",
+          "raise": "Precise discipline node connectors that light up the underlying WebGL shader as the visitor navigates the triad."
+        }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned.webp"
+    },
+    {
+      "id": "model-pick",
+      "label": "The Computational Folio",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Fine-press computational monograph (MIT Media Lab / Form+Code)",
+      "thesis": "Publication-grade editorial elegance anchored by generous whitespace, ink-trap serif titling, and live reactive algorithmic canvas viewports.",
+      "palette": [
+        "#111827",
+        "#fdfbf7",
+        "#2563eb",
+        "#9ca3af"
+      ],
+      "materials": [
+        "woven rag paper",
+        "letterpress ink",
+        "crisp algorithmic canvas"
+      ],
+      "viewport": "Generous masthead with editorial serif type, triad navigation as table of contents, and an interactive Three.js fluid canvas framed in museum-grade borders.",
+      "risk": "Familiar in elite design agency circles; requires extreme typographic discipline to avoid looking like a static magazine.",
+      "comp": ".impeccable/mocks/decision/model-pick.webp"
+    },
+    {
+      "id": "challenger-kraftwerk",
+      "label": "The Man-Machine Grid",
+      "verdict": "competitive",
+      "lineage": "Kraftwerk man-machine identity on strict modular traffic grid",
+      "thesis": "Every discipline and project wired into a high-voltage, neon-accented schematic with strict orthogonal navigation.",
+      "palette": [
+        "#0f172a",
+        "#f8fafc",
+        "#ef4444",
+        "#f59e0b",
+        "#10b981"
+      ],
+      "materials": [
+        "enamel fills",
+        "neon signal rules",
+        "modular traffic grid"
+      ],
+      "viewport": "Numbered coordinate grid with traffic signal indicators (Writer: Red, Artist: Amber, Coder: Green) pulsing through orthogonal wireframes.",
+      "case": "Exceptional clarity and visceral resonance for engineering teams; slightly rigid for literary and expressive essays.",
+      "risk": "High-voltage intensity can tire the reader on long essays.",
+      "comp": ".impeccable/mocks/decision/challenger-kraftwerk.webp",
+      "hero": "https://impeccable.style/worlds/cards/kraftwerk-man-machine-hero.webp"
+    },
+    {
+      "id": "challenger-papercut",
+      "label": "Layered Papercut Roundel",
+      "verdict": "declined",
+      "lineage": "Folded sheet papercuts with zero tonal shading",
+      "palette": [
+        "#fafafa",
+        "#1e293b",
+        "#e11d48",
+        "#facc15"
+      ],
+      "materials": [
+        "cut paper",
+        "clean overlap"
+      ],
+      "case": "Visually striking for artwork, but unsuitable for code blocks, terminal logs, and technical case studies.",
+      "kept": "Depth made solely through crisp physical overlaps without fuzzy shadows.",
+      "hero": "https://impeccable.style/worlds/cards/craft-making-lowicz-layered-papercut-hero.webp"
+    },
+    {
+      "id": "challenger-sewing-pattern",
+      "label": "Drafted Pattern Envelope",
+      "verdict": "declined",
+      "lineage": "Folded tissue patterns with nested cut lines",
+      "palette": [
+        "#f5efe6",
+        "#1c1917",
+        "#dc2626"
+      ],
+      "materials": [
+        "manila tissue",
+        "dashed drafting lines"
+      ],
+      "case": "Poetic metaphor for craftsmanship, but unfamiliar to tech and software hiring leads.",
+      "kept": "Dashed registration rules and nested discipline indicators.",
+      "hero": "https://impeccable.style/worlds/cards/fashion-folded-worlds-sewing-pattern-envelope-hero.webp"
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "buildPath": {
+    "value": "code",
+    "toggle": false
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The Category Standard",
+    "thesis": "The modern clean portfolio template: dark glassmorphism card, gradient badge, and multi-role filters executed cleanly.",
+    "palette": [
+      "#0f172a",
+      "#ffffff",
+      "#6366f1"
+    ],
+    "materials": [
+      "frosted glass",
+      "ambient gradient",
+      "minimalist sans"
+    ],
+    "viewport": "Centered hero headline with gradient text accent, avatar with glowing halo, floating glass card container, and 3-column project grid.",
+    "risk": "Polished and predictable, looks like every other portfolio in the tech space.",
+    "comp": ".impeccable/mocks/decision/canon.webp"
+  },
+  "steer": true
+}

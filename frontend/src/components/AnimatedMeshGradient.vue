@@ -5,34 +5,31 @@ import * as THREE from 'three';
 const props = defineProps({
   color1: {
     type: String,
-    default: '#33a0ff' // Blue
+    default: '#f3ece2' // Soft warm oatmeal
   },
   color2: {
     type: String,
-    default: '#ff7a33' // Orange
+    default: '#e7ded0' // Warm clay sand
   },
   color3: {
     type: String,
-    default: '#ffde33' // Yellow
+    default: '#dfd2bf' // Muted terra tint
   }
 });
 
 const canvasContainer = ref(null);
 
-// Utility to parse hex colors to THREE.Color
 function parseColor(hex) {
   return new THREE.Color(hex);
 }
 
-// GLSL Vertex Shader (Simplex Noise Deformation)
+// Organic Simplex Noise for soft watercolor diffusion
 const vertexShader = `
   varying vec2 vUv;
   varying vec3 vPos;
   uniform float uTime;
-  uniform float uNoiseDensity;
-  uniform float uNoiseStrength;
 
-  // 3D Simplex Noise from shadergradient
+  // 3D Simplex Noise
   vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 permute(vec4 x) { return mod289(((x * 34.0) + 1.0) * x); }
@@ -102,22 +99,15 @@ const vertexShader = `
 
   void main() {
     vUv = uv;
-    // Normalize position relative to our huge plane size to keep the noise structure large
-    vec3 normalizedPos = position * 0.05; 
-    vec3 noisePos = 0.43 * normalizedPos * uNoiseDensity;
-    
-    // Adjusted animation speed and magnitude
-    float t = uTime * 0.5;
-    float distortion = 0.75 * cnoise(noisePos + t);
-    
-    // Scale up the normal displacement drastically to produce deep valleys and high peaks
-    vec3 pos = position + normal * distortion * (uNoiseStrength * 8.0);
+    vec3 normalizedPos = position * 0.04;
+    float t = uTime * 0.25;
+    float distortion = 0.5 * cnoise(normalizedPos + t);
+    vec3 pos = position + normal * distortion * 4.0;
     vPos = pos;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
   }
 `;
 
-// GLSL Fragment Shader (Color Linear Blend)
 const fragmentShader = `
   varying vec2 vUv;
   varying vec3 vPos;
@@ -126,11 +116,8 @@ const fragmentShader = `
   uniform vec3 uColor3;
 
   void main() {
-    // 3D procedural gradient mixing logic modeled after shadergradient
-    // Blends horizontally between color 1 and 2, and maps color 3 to the Z-depth peaks.
-    float xMix = smoothstep(-20.0, 20.0, vPos.x);
-    float zMix = smoothstep(-8.0, 8.0, vPos.z);
-    
+    float xMix = smoothstep(-15.0, 15.0, vPos.x);
+    float zMix = smoothstep(-6.0, 6.0, vPos.z);
     vec3 finalColor = mix(mix(uColor1, uColor2, xMix), uColor3, zMix);
     gl_FragColor = vec4(finalColor, 1.0);
   }
@@ -142,25 +129,19 @@ function initWebGL() {
   if (!canvasContainer.value) return;
 
   scene = new THREE.Scene();
-  
-  // Camera Setup (pulled further back to view the enlarged plane)
-  camera = new THREE.PerspectiveCamera(75, canvasContainer.value.clientWidth / canvasContainer.value.clientHeight, 0.1, 100);
-  camera.position.z = 20;
-  
-  // Renderer Setup
+  camera = new THREE.PerspectiveCamera(65, canvasContainer.value.clientWidth / canvasContainer.value.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
   renderer.setSize(canvasContainer.value.clientWidth, canvasContainer.value.clientHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // cap pixel ratio for performance
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   canvasContainer.value.appendChild(renderer.domElement);
 
-  // Material & Shaders
   material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
     uniforms: {
       uTime: { value: 0 },
-      uNoiseDensity: { value: 1.2 },
-      uNoiseStrength: { value: 2.0 },
       uColor1: { value: parseColor(props.color1) },
       uColor2: { value: parseColor(props.color2) },
       uColor3: { value: parseColor(props.color3) }
@@ -168,12 +149,10 @@ function initWebGL() {
     wireframe: false
   });
 
-  // Mesh Setup
-  // High density plane geometry guarantees smooth rolling hills
-  const geometry = new THREE.PlaneGeometry(50, 50, 100, 100);
+  const geometry = new THREE.PlaneGeometry(45, 45, 60, 60);
   mesh = new THREE.Mesh(geometry, material);
-  mesh.rotation.x = -Math.PI / 4; // Tilt back 45%
-  mesh.rotation.z = Math.PI / 6;  // Spin 30%
+  mesh.rotation.x = -Math.PI / 4;
+  mesh.rotation.z = Math.PI / 8;
   scene.add(mesh);
 
   window.addEventListener('resize', handleResize);
@@ -189,12 +168,10 @@ function handleResize() {
 
 function animate() {
   animationId = requestAnimationFrame(animate);
-  // Extremely slow delta for a very relaxed, lava-lamp aesthetic
-  if (material) material.uniforms.uTime.value += 0.004;
+  if (material) material.uniforms.uTime.value += 0.003;
   if (renderer && scene && camera) renderer.render(scene, camera);
 }
 
-// Reactivity mapping the Vue props exactly back to the Canvas uniforms
 watch(() => props.color1, (val) => { if (material) material.uniforms.uColor1.value.set(val); });
 watch(() => props.color2, (val) => { if (material) material.uniforms.uColor2.value.set(val); });
 watch(() => props.color3, (val) => { if (material) material.uniforms.uColor3.value.set(val); });
@@ -216,15 +193,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute inset-0 z-0  bg-slate-900">
-    <!-- WebGL Canvas Anchor -->
-    <div ref="canvasContainer" class="absolute inset-[-10%] w-[120%] h-[120%] pointer-events-none opacity-100 z-0" style="filter: blur(90px); transform: translate3d(0, 0, 0); will-change: transform;"></div>
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-2xl">
+    <!-- WebGL Canvas with deep soft blur to simulate watercolor wash on paper -->
+    <div 
+      ref="canvasContainer" 
+      class="absolute inset-[-15%] w-[130%] h-[130%] pointer-events-none opacity-85" 
+      style="filter: blur(70px); will-change: transform;"
+    ></div>
     
-    <!-- Grain Overlay on top of the Mesh adds tangible realism without requiring PBR shaders -->
-    <div class="absolute inset-0 opacity-[0.10] mix-blend-overlay pointer-events-none z-10" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+    <!-- Organic tactile paper noise overlay -->
+    <div 
+      class="absolute inset-0 opacity-[0.06] mix-blend-multiply pointer-events-none" 
+      style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"
+    ></div>
   </div>
 </template>
-
-<style scoped>
-/* Scoped styles omitted: Filters applied directly to wrapper to ensure dynamically appended <canvas> elements are blurred correctly */
-</style>
