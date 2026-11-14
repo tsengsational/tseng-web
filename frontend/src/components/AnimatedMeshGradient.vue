@@ -5,15 +5,15 @@ import * as THREE from 'three';
 const props = defineProps({
   color1: {
     type: String,
-    default: '#f3ece2' // Soft warm oatmeal
+    default: '#fdf9f3' // Cream linen ground
   },
   color2: {
     type: String,
-    default: '#e7ded0' // Warm clay sand
+    default: '#d97d5a' // Warm rich terracotta
   },
   color3: {
     type: String,
-    default: '#dfd2bf' // Muted terra tint
+    default: '#2c2523' // Deep sumi soot ink
   }
 });
 
@@ -23,13 +23,17 @@ function parseColor(hex) {
   return new THREE.Color(hex);
 }
 
-// Organic Simplex Noise for soft watercolor diffusion
+// Suminagashi: Continuous natural marbling ripples + interactive cursor waves
 const vertexShader = `
   varying vec2 vUv;
   varying vec3 vPos;
+  varying float vWave;
+  varying float vRipples;
+  
   uniform float uTime;
+  uniform vec2 uMouse;
+  uniform float uMouseSpeed;
 
-  // 3D Simplex Noise
   vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 permute(vec4 x) { return mod289(((x * 34.0) + 1.0) * x); }
@@ -99,37 +103,120 @@ const vertexShader = `
 
   void main() {
     vUv = uv;
-    vec3 normalizedPos = position * 0.04;
-    float t = uTime * 0.25;
-    float distortion = 0.5 * cnoise(normalizedPos + t);
-    vec3 pos = position + normal * distortion * 4.0;
+    vec3 normalizedPos = position * 0.055;
+    float t = uTime * 0.45;
+    
+    // 1. Autonomous concentric water ripples propagating across the surface
+    vec2 c1 = vec2(0.3, 0.4);
+    vec2 c2 = vec2(0.7, 0.6);
+    float d1 = length((uv - c1) * vec2(1.4, 1.0));
+    float d2 = length((uv - c2) * vec2(1.2, 1.0));
+    float autoRipple = sin(d1 * 14.0 - t * 2.0) * 0.5 + cos(d2 * 12.0 - t * 1.5) * 0.5;
+    vRipples = autoRipple;
+
+    // 2. Large organic flowing simplex noise
+    float ambientNoise = cnoise(normalizedPos + vec3(t * 0.4, t * 0.3, t * 0.2));
+    
+    // 3. Interactive pointer ripples
+    vec2 diff = (uv - uMouse) * vec2(1.35, 1.0);
+    float mouseD = length(diff);
+    float mouseInfluence = exp(-mouseD * 3.2);
+    float mouseWave = sin(mouseD * 22.0 - t * 4.0) * mouseInfluence * (0.8 + min(uMouseSpeed * 2.2, 1.8));
+    vWave = mouseWave;
+
+    // Combine autonomous water currents and mouse waves for rich tactile motion
+    vec3 pos = position + normal * (ambientNoise * 4.0 + autoRipple * 2.5 + mouseWave * 6.5);
     vPos = pos;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
   }
 `;
 
+// High-contrast Wabi-Sabi Marbled Pigment Shader
 const fragmentShader = `
   varying vec2 vUv;
   varying vec3 vPos;
+  varying float vWave;
+  varying float vRipples;
+  
   uniform vec3 uColor1;
   uniform vec3 uColor2;
   uniform vec3 uColor3;
+  uniform vec2 uMouse;
+  uniform float uMouseSpeed;
+  uniform float uTime;
 
   void main() {
-    float xMix = smoothstep(-15.0, 15.0, vPos.x);
-    float zMix = smoothstep(-6.0, 6.0, vPos.z);
-    vec3 finalColor = mix(mix(uColor1, uColor2, xMix), uColor3, zMix);
+    vec2 diff = (vUv - uMouse) * vec2(1.35, 1.0);
+    float d = length(diff);
+    
+    // Swirling marbling distortion around mouse
+    float swirlAngle = exp(-d * 3.0) * (1.0 + uMouseSpeed * 2.0);
+    mat2 rot = mat2(cos(swirlAngle), -sin(swirlAngle), sin(swirlAngle), cos(swirlAngle));
+    vec2 swirledDiff = rot * diff;
+
+    // Dynamic Suminagashi ink veins responding to ripples and time
+    float inkVein = sin((vUv.x * 6.0 + vUv.y * 5.0) + vRipples * 2.0 + vWave * 4.0 + uTime * 0.3);
+    inkVein = smoothstep(-0.4, 0.8, inkVein);
+
+    // Sharp, crisp contrast mixing between paper ground (Color 1), earth tone (Color 2), and sumi accent (Color 3)
+    float baseGrad = smoothstep(-10.0, 12.0, vPos.x + swirledDiff.x * 12.0);
+    float rippleGrad = smoothstep(-0.8, 1.2, vWave * 1.5 + vRipples * 0.8);
+    
+    // Color 1: Soft paper ground
+    // Color 2: Rich earth tone (terracotta / ocher / sage)
+    // Color 3: Deep sumi charcoal accent
+    vec3 tone = mix(uColor1, uColor2, baseGrad * 0.85 + rippleGrad * 0.35);
+    
+    // Marbled ink streak definition
+    float inkStreak = exp(-d * 3.5) * (0.3 + uMouseSpeed * 0.5) + (1.0 - inkVein) * 0.22;
+    vec3 finalColor = mix(tone, uColor3, clamp(inkStreak, 0.0, 0.85));
+
     gl_FragColor = vec4(finalColor, 1.0);
   }
 `;
 
 let scene, camera, renderer, material, mesh, animationId;
 
+const targetMouse = { x: 0.5, y: 0.5 };
+const currentMouse = { x: 0.5, y: 0.5 };
+let targetSpeed = 0;
+let currentSpeed = 0;
+let lastPointerTime = 0;
+
+function handlePointerMove(e) {
+  if (!canvasContainer.value) return;
+  const rect = canvasContainer.value.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  const nx = (clientX - rect.left) / rect.width;
+  const ny = 1.0 - (clientY - rect.top) / rect.height;
+
+  const now = performance.now();
+  const dt = Math.max(now - lastPointerTime, 16);
+  lastPointerTime = now;
+
+  const dx = nx - targetMouse.x;
+  const dy = ny - targetMouse.y;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  
+  targetSpeed = Math.min((dist / (dt / 1000)) * 0.25, 2.0);
+
+  targetMouse.x = Math.max(-0.2, Math.min(1.2, nx));
+  targetMouse.y = Math.max(-0.2, Math.min(1.2, ny));
+}
+
+function handlePointerLeave() {
+  targetSpeed = 0;
+}
+
 function initWebGL() {
   if (!canvasContainer.value) return;
 
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(65, canvasContainer.value.clientWidth / canvasContainer.value.clientHeight, 0.1, 100);
+  camera = new THREE.PerspectiveCamera(60, canvasContainer.value.clientWidth / canvasContainer.value.clientHeight, 0.1, 100);
   camera.position.z = 18;
 
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -142,6 +229,8 @@ function initWebGL() {
     fragmentShader,
     uniforms: {
       uTime: { value: 0 },
+      uMouse: { value: new THREE.Vector2(0.5, 0.5) },
+      uMouseSpeed: { value: 0 },
       uColor1: { value: parseColor(props.color1) },
       uColor2: { value: parseColor(props.color2) },
       uColor3: { value: parseColor(props.color3) }
@@ -149,13 +238,17 @@ function initWebGL() {
     wireframe: false
   });
 
-  const geometry = new THREE.PlaneGeometry(45, 45, 60, 60);
+  const geometry = new THREE.PlaneGeometry(50, 50, 75, 75);
   mesh = new THREE.Mesh(geometry, material);
   mesh.rotation.x = -Math.PI / 4;
   mesh.rotation.z = Math.PI / 8;
   scene.add(mesh);
 
+  window.addEventListener('mousemove', handlePointerMove, { passive: true });
+  window.addEventListener('touchmove', handlePointerMove, { passive: true });
+  window.addEventListener('mouseleave', handlePointerLeave, { passive: true });
   window.addEventListener('resize', handleResize);
+  
   animate();
 }
 
@@ -168,7 +261,19 @@ function handleResize() {
 
 function animate() {
   animationId = requestAnimationFrame(animate);
-  if (material) material.uniforms.uTime.value += 0.003;
+
+  currentMouse.x += (targetMouse.x - currentMouse.x) * 0.085;
+  currentMouse.y += (targetMouse.y - currentMouse.y) * 0.085;
+  
+  targetSpeed *= 0.92;
+  currentSpeed += (targetSpeed - currentSpeed) * 0.1;
+
+  if (material) {
+    material.uniforms.uTime.value += 0.005; // Slightly faster natural ripple current
+    material.uniforms.uMouse.value.set(currentMouse.x, currentMouse.y);
+    material.uniforms.uMouseSpeed.value = currentSpeed;
+  }
+
   if (renderer && scene && camera) renderer.render(scene, camera);
 }
 
@@ -182,7 +287,11 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (animationId) cancelAnimationFrame(animationId);
+  window.removeEventListener('mousemove', handlePointerMove);
+  window.removeEventListener('touchmove', handlePointerMove);
+  window.removeEventListener('mouseleave', handlePointerLeave);
   window.removeEventListener('resize', handleResize);
+
   if (renderer && canvasContainer.value) {
     canvasContainer.value.removeChild(renderer.domElement);
     renderer.dispose();
@@ -193,17 +302,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-2xl">
-    <!-- WebGL Canvas with deep soft blur to simulate watercolor wash on paper -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-3xl">
+    <!-- Refined 12px blur keeps the fluid water ripples and marbling ink lines crisp and vivid -->
     <div 
       ref="canvasContainer" 
-      class="absolute inset-[-15%] w-[130%] h-[130%] pointer-events-none opacity-85" 
-      style="filter: blur(70px); will-change: transform;"
+      class="absolute inset-[-8%] w-[116%] h-[116%] pointer-events-none opacity-90 transition-opacity duration-700" 
+      style="filter: blur(12px); will-change: transform;"
     ></div>
     
     <!-- Organic tactile paper noise overlay -->
     <div 
-      class="absolute inset-0 opacity-[0.06] mix-blend-multiply pointer-events-none" 
+      class="absolute inset-0 opacity-[0.05] mix-blend-multiply pointer-events-none" 
       style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"
     ></div>
   </div>

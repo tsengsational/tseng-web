@@ -58,7 +58,7 @@
         <h3 class="text-lg font-serif font-normal text-wabi-text group-hover:text-clay-terracotta transition-colors mb-2.5 leading-snug" v-html="post.title"></h3>
         
         <!-- Post Excerpt -->
-        <p class="text-xs text-wabi-muted font-normal leading-relaxed line-clamp-3 mb-6 flex-grow" v-html="stripHtml(post.description)"></p>
+        <p class="text-xs text-wabi-text/90 font-normal leading-relaxed line-clamp-3 mb-6 flex-grow" v-html="stripHtml(post.description)"></p>
 
         <!-- Read Action -->
         <div class="pt-3 border-t border-wabi-border/60 flex items-center justify-between text-xs text-wabi-muted group-hover:text-wabi-text transition-colors">

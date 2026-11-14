@@ -52,7 +52,7 @@
         {{ project.title }}
       </h3>
       
-      <p class="text-sm text-wabi-muted font-normal leading-relaxed line-clamp-3 mb-6 flex-grow">
+      <p class="text-sm text-wabi-text/90 font-normal leading-relaxed line-clamp-3 mb-6 flex-grow">
         {{ project.description }}
       </p>
 
@@ -61,7 +61,7 @@
         <span 
           v-for="t in project.tags" 
           :key="t.tags_id?.name || t" 
-          class="text-[11px] px-2.5 py-0.5 rounded-full border border-wabi-border bg-wabi-card/50 text-wabi-muted font-medium"
+          class="text-[11px] px-2.5 py-0.5 rounded-full border border-wabi-border bg-wabi-card/80 text-wabi-text/80 font-medium"
         >
           {{ t.tags_id?.name || t }}
         </span>
